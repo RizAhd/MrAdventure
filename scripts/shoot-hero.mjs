@@ -11,23 +11,17 @@ const browser = await puppeteer.launch({ executablePath: EXE, headless: "new", a
 
 const d = await browser.newPage();
 await d.setViewport({ width: 1440, height: 820, deviceScaleFactor: 1 });
-await d.goto(URL, { waitUntil: "load", timeout: 60000 });
-await wait(3500);
-await d.screenshot({ path: `${OUT}\\hero-d1.png` });
-console.log("d1");
-await wait(5200); // auto-advance -> slide 2
-await d.screenshot({ path: `${OUT}\\hero-d2.png` });
-console.log("d2");
-await wait(5200); // slide 3
-await d.screenshot({ path: `${OUT}\\hero-d3.png` });
-console.log("d3");
+await d.goto(URL, { waitUntil: "domcontentloaded", timeout: 60000 });
+await wait(11000);
+await d.screenshot({ path: `${OUT}\\premhero-d.png` });
+console.log("desktop done");
 
 const m = await browser.newPage();
 await m.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
-await m.goto(URL, { waitUntil: "load", timeout: 60000 });
-await wait(3500);
-await m.screenshot({ path: `${OUT}\\hero-m.png` });
-console.log("m");
+await m.goto(URL, { waitUntil: "domcontentloaded", timeout: 60000 });
+await wait(11000);
+await m.screenshot({ path: `${OUT}\\premhero-m.png` });
+console.log("mobile done");
 
 await Promise.race([browser.close().catch(() => {}), wait(4000)]);
 console.log("OK");
