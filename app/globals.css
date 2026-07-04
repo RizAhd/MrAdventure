@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Mr Adventure — brand design tokens (Tailwind v4)                    */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Brand green (safari / forest) */
+  --color-brand-50: #eef7f1;
+  --color-brand-100: #d5ecdd;
+  --color-brand-200: #aed9bd;
+  --color-brand-300: #7dbf96;
+  --color-brand-400: #4a9f6c;
+  --color-brand-500: #2f8553;
+  --color-brand-600: #1f6a41;
+  --color-brand-700: #175334;
+  --color-brand-800: #123f28;
+  --color-brand-900: #0d3320;
+  --color-brand-950: #062015;
+
+  /* Brand gold (from the logo) */
+  --color-gold-300: #ffe08a;
+  --color-gold-400: #ffcf3f;
+  --color-gold-500: #f5b301;
+  --color-gold-600: #d99200;
+  --color-gold-700: #b37400;
+
+  /* Neutrals */
+  --color-sand: #faf6ee;
+  --color-cream: #fffdf8;
+  --color-ink: #0f1c16;
+
+  /* WhatsApp */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1ebe5a;
+
+  /* Fonts (wired to next/font variables in layout.tsx) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-inter), ui-sans-serif, sans-serif;
+
+  /* Motion */
+  --animate-marquee: marquee 38s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* offset sticky navbar for anchor links */
+  }
+  body {
+    background-color: var(--color-sand);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background-color: var(--color-gold-400);
+    color: var(--color-brand-900);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Utilities / helpers                                                */
+/* ------------------------------------------------------------------ */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Reusable section wrapper spacing */
+  .section {
+    padding-top: clamp(3.5rem, 8vw, 7rem);
+    padding-bottom: clamp(3.5rem, 8vw, 7rem);
+  }
+
+  /* Subtle hide-scrollbar for horizontal carousels */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .pause-on-hover:hover { animation-play-state: paused; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
