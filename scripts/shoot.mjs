@@ -54,5 +54,6 @@ await autoScroll(m);
 await m.screenshot({ path: `${OUT}\\mobile-full.png`, fullPage: true });
 console.log("mobile shots done");
 
-await browser.close();
+await Promise.race([browser.close().catch(() => {}), wait(5000)]);
 console.log("OK", OUT);
+process.exit(0);

@@ -64,9 +64,9 @@ export function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Legibility overlays (kept light so the photography shows through) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/85 via-brand-950/40 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-brand-950/5 to-brand-950/25" />
+      {/* Legibility overlays — neutral (not green) so the real photo colours show through */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/20" />
 
       {/* Content */}
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 pb-20 pt-28 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">
