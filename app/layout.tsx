@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mradventure.example"),
+  metadataBase: new URL("https://rizahd.github.io/MrAdventure/"),
   title: {
     default: "Mr Adventure Tours & Travels | Sri Lanka Safaris, Rentals & Taxi",
     template: "%s | Mr Adventure Tours & Travels",
