@@ -41,13 +41,13 @@ export const metadata: Metadata = {
       "Safaris, rentals & island-wide taxi on Sri Lanka's east coast. Safe travel, best prices, reliable service.",
     type: "website",
     locale: "en_US",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Mr Adventure Tours & Travels" }],
+    images: [{ url: "og.jpg", width: 1200, height: 630, alt: "Mr Adventure Tours & Travels" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mr Adventure Tours & Travels",
     description: "Sri Lanka safaris, rentals & island-wide taxi. Book on WhatsApp.",
-    images: ["/og.jpg"],
+    images: ["og.jpg"],
   },
 };
 
