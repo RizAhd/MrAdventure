@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { PawPrint, Bike, Car, Plane, Compass, Star, ChevronDown } from "lucide-react";
+import { PawPrint, Bike, Car, Plane, Compass, Check, ChevronDown } from "lucide-react";
 import { site } from "@/data/site";
 import { waEnquiry } from "@/lib/whatsapp";
 import { buttonClasses } from "@/components/ui/Button";
@@ -64,9 +64,9 @@ export function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Legibility overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/90 via-brand-950/60 to-brand-950/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-950/85 via-transparent to-brand-950/50" />
+      {/* Legibility overlays (kept light so the photography shows through) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/85 via-brand-950/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-brand-950/5 to-brand-950/25" />
 
       {/* Content */}
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 pb-20 pt-28 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">

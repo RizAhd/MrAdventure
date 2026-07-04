@@ -38,7 +38,7 @@ const browser = await puppeteer.launch({
 const d = await browser.newPage();
 await d.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
 await d.goto(URL, { waitUntil: "networkidle2", timeout: 90000 });
-await wait(1200);
+await wait(2600);
 await d.screenshot({ path: `${OUT}\\desktop-hero.png` });
 await autoScroll(d);
 await d.screenshot({ path: `${OUT}\\desktop-full.png`, fullPage: true });
@@ -48,7 +48,7 @@ console.log("desktop shots done");
 const m = await browser.newPage();
 await m.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
 await m.goto(URL, { waitUntil: "networkidle2", timeout: 90000 });
-await wait(1200);
+await wait(2600);
 await m.screenshot({ path: `${OUT}\\mobile-hero.png` });
 await autoScroll(m);
 await m.screenshot({ path: `${OUT}\\mobile-full.png`, fullPage: true });
