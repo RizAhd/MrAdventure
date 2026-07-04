@@ -10,11 +10,11 @@ import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 
 const slides = [
-  { src: "/gallery/leopard-1.jpg", alt: "Sri Lankan leopard on safari" },
-  { src: "/gallery/elephant-1.jpg", alt: "Wild elephant beside the jungle" },
-  { src: "/destinations/arugam-bay.jpg", alt: "Golden beach at Arugam Bay" },
-  { src: "/gallery/boat-1.jpg", alt: "Guests on a lagoon boat safari" },
-  { src: "/gallery/jeep-tourists-1.jpg", alt: "Travellers on a safari jeep" },
+  { src: "/hero/leopard.jpg", alt: "Sri Lankan leopard in the wild" },
+  { src: "/hero/elephant.jpg", alt: "Safari jeep watching a wild elephant" },
+  { src: "/hero/sigiriya.jpg", alt: "Sigiriya Lion Rock fortress" },
+  { src: "/hero/beach.jpg", alt: "Golden sunset over a Sri Lankan beach" },
+  { src: "/hero/fishermen.jpg", alt: "Traditional stilt fishermen on the south coast" },
 ];
 
 const quickPicks = [
