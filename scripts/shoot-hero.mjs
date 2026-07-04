@@ -9,28 +9,26 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const browser = await puppeteer.launch({ executablePath: EXE, headless: "new", args: ["--hide-scrollbars", "--force-color-profile=srgb"] });
 
-// Desktop — capture each hero slide
 const d = await browser.newPage();
 await d.setViewport({ width: 1440, height: 820, deviceScaleFactor: 1 });
-await d.goto(URL, { waitUntil: "networkidle2", timeout: 90000 });
-await wait(2600);
-for (let i = 1; i <= 5; i++) {
-  try {
-    await d.click(`button[aria-label="Show slide ${i}"]`);
-  } catch {}
-  await wait(1500);
-  await d.screenshot({ path: `${OUT}\\hero-d${i}.png` });
-  console.log("desktop slide", i);
-}
+await d.goto(URL, { waitUntil: "load", timeout: 60000 });
+await wait(3500);
+await d.screenshot({ path: `${OUT}\\hero-d1.png` });
+console.log("d1");
+await wait(5200); // auto-advance -> slide 2
+await d.screenshot({ path: `${OUT}\\hero-d2.png` });
+console.log("d2");
+await wait(5200); // slide 3
+await d.screenshot({ path: `${OUT}\\hero-d3.png` });
+console.log("d3");
 
-// Mobile hero
 const m = await browser.newPage();
 await m.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
-await m.goto(URL, { waitUntil: "networkidle2", timeout: 90000 });
-await wait(2600);
+await m.goto(URL, { waitUntil: "load", timeout: 60000 });
+await wait(3500);
 await m.screenshot({ path: `${OUT}\\hero-m.png` });
-console.log("mobile hero done");
+console.log("m");
 
-await Promise.race([browser.close().catch(() => {}), wait(5000)]);
+await Promise.race([browser.close().catch(() => {}), wait(4000)]);
 console.log("OK");
 process.exit(0);
