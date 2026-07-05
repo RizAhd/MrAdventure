@@ -17,6 +17,10 @@ ideally, **replace them with Mr Adventure's own photos** over time.
 | `public/destinations/pasikuda.jpg` | Pasikudah beach | https://commons.wikimedia.org/wiki/File:Pasikudah_beach.JPG |
 | `public/destinations/trincomalee.jpg` | Bay of Trincomalee | https://commons.wikimedia.org/wiki/File:Bay_of_Trincomalee.jpg |
 | `public/destinations/arugam-bay.jpg` | Arugam Bay | https://commons.wikimedia.org/wiki/File:Beach_of_Arugam_Bay.jpg |
+| `public/destinations/colombo.jpg` | Colombo (Beira Lake) · Kapila Perera · CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Skyline_of_colombo_beira_lake.jpg |
+| `public/destinations/kandy.jpg` | Kandy (Temple of the Tooth) · Rashod Korala · CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:The_Temple_of_Tooth_relic_in_Kandy,_Sri_Lanka_3.jpg |
+| `public/destinations/galle.jpg` | Galle Fort lighthouse · Samal Nadeeshan · CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lighthouse_Galle,_Sri_Lanka.jpg |
+| `public/destinations/matara.jpg` | Matara coast · Weranga Rajapaksha · CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Blue_beach_island_land_area.jpg |
 | `public/fleet/tuktuk.jpg` | Sri Lankan tuk-tuk | https://commons.wikimedia.org/wiki/File:Bajaj_auto-rickshaw_in_Sri_Lanka.jpg |
 | `public/fleet/bicycle.jpg` | Bicycle | https://commons.wikimedia.org/wiki/File:Orbea_Occam_2020.jpg |
 
