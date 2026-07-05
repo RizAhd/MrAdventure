@@ -31,6 +31,23 @@ that work — do not break them:
    (`configure-pages@v5` with `enablement: true`, `deploy-pages@v4`). There must be **only this one**
    Pages workflow (a duplicate `nextjs.yml` template once fought it and re-broke images — it was deleted).
 
+### ⚠️ CURRENT STATE (2026-07-05) — read this
+GitHub **Pages source is "Deploy from a branch" (main /root)**, NOT GitHub Actions. That made Pages run
+**Jekyll**, which rendered `README.md` as the homepage and 404'd all assets ("website not showing" bug).
+Because the source is a branch, the Actions `deploy-pages` artifact is often ignored and the two race.
+
+**Applied workaround (works today):** the **built site is committed to the branch root** (`index.html`,
+`_next/`, `fleet/`, `gallery/`, `destinations/`, `hero/`, `logos/`, `og.jpg`, `icon.png`, `404.html`,
+plus `.txt` route files) **and a root `.nojekyll`** disables Jekyll — so branch-mode Pages serves the real
+site at `/MrAdventure/`. **Consequence:** every content change now needs `npm run build` + copy `out/*` to
+the repo root + commit (see `robocopy out . /E /XD out`), because the branch root IS what's served.
+
+**RECOMMENDED clean fix (owner, 20 sec):** GitHub repo → **Settings → Pages → Build and deployment →
+Source → "GitHub Actions"**. After that, the Actions workflow (`.github/workflows/deploy.yml`) serves the
+`out/` artifact cleanly and you can **delete the build files from the repo root** (index.html, _next/,
+404*, og.jpg, icon.png, the duplicated image folders at root, .nojekyll, *.txt) — keep them only in
+`public/` + `out/`. Then deploy = just push.
+
 **Deploy = just push to `main`.** A repo hook **auto-commits and auto-pushes** file changes with generated
 messages, so often your edits are already committed. Always `git add -A`, verify with `git status`, and
 check `git rev-list --count origin/main..HEAD`. The GitHub Action then deploys in ~1–2 min.
