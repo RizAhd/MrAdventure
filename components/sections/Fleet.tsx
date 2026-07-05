@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Users } from "lucide-react";
 import { fleet } from "@/data/fleet";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { buttonClasses } from "@/components/ui/Button";
@@ -26,7 +26,7 @@ export function Fleet() {
             align="left"
             eyebrow="Our Fleet"
             title="Ride in comfort"
-            subtitle="Clean, well-maintained vehicles for every kind of trip — from open safari jeeps to spacious tour vans."
+            subtitle="Clean, well-maintained cars, vans and a 27-seat coach for airport runs and island tours — plus safari jeeps, scooters and tuk-tuks."
           />
           <div className="hidden shrink-0 gap-2 sm:flex">
             <button
@@ -65,6 +65,10 @@ export function Fleet() {
                   sizes="304px"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-brand-900 shadow-sm backdrop-blur-sm">
+                  <Users className="h-3.5 w-3.5 text-brand-700" />
+                  {v.capacity}
+                </span>
               </div>
               <div className="p-5">
                 <h3 className="font-display text-lg font-bold text-brand-900">{v.name}</h3>

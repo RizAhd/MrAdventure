@@ -26,14 +26,15 @@ const jsonLd = {
   },
   slogan: site.tagline,
   makesOffer: [
+    "Island-wide Taxi Service",
+    "Airport Transfer",
+    "Van & Mini-bus Hire",
     "Kumana Safari",
     "Lagoon Safari",
     "Boat Safari",
     "Scooter Rent",
     "Tuk Tuk Rent",
     "Bicycle Rent",
-    "Island-wide Taxi Service",
-    "Airport Transfer",
   ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
 };
 
@@ -43,11 +44,11 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
       <Stats />
+      <Taxi />
+      <Fleet />
+      <Destinations />
       <Safaris />
       <Rentals />
-      <Taxi />
-      <Destinations />
-      <Fleet />
       <Gallery />
       <WhyUs />
       <Testimonials />

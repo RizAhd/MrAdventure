@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Plane, Users, Car, MapPin } from "lucide-react";
+import { Plane, ShieldCheck, Users, MapPin } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { buttonClasses } from "@/components/ui/Button";
@@ -7,12 +7,12 @@ import { WhatsAppIcon } from "@/components/ui/icons";
 import { waEnquiry } from "@/lib/whatsapp";
 
 const features = [
-  { Icon: Plane, title: "Airport Drop & Pickup", text: "On-time transfers to and from Colombo (CMB) and Mattala airports." },
-  { Icon: Users, title: "Share Taxi Service", text: "Split the cost with other travellers on popular island routes." },
-  { Icon: Car, title: "Island-wide Coverage", text: "Cars, SUVs and vans for day trips or multi-day tours anywhere." },
+  { Icon: Plane, title: "Airport Drop & Pickup", text: "On-time transfers to and from Colombo (CMB) and Mattala airports, day or night." },
+  { Icon: ShieldCheck, title: "Fixed, fair prices", text: "Agreed up front on WhatsApp — no meters, no detours, no surprises." },
+  { Icon: Users, title: "Any group size", text: "Cars, vans and a 27-seat coach — perfect for couples, families and big groups." },
 ];
 
-const route = ["Arugam Bay", "Ella", "Pasikuda", "Trincomalee", "Dambulla", "Sigiriya"];
+const route = ["Colombo", "Kandy", "Sigiriya", "Ella", "Galle", "Matara", "Arugam Bay", "Trincomalee"];
 
 export function Taxi() {
   return (
@@ -25,9 +25,9 @@ export function Taxi() {
         <SectionHeading
           light
           align="left"
-          eyebrow="All-Island Taxi"
-          title="Anywhere on the island, anytime"
-          subtitle="Safe, metered-fair rides across Sri Lanka — from a quick airport transfer to a full island road-trip."
+          eyebrow="Island-wide Taxi"
+          title="Your ride, anywhere in Sri Lanka"
+          subtitle="Safe, reliable door-to-door taxi and airport transfers across the whole island — from a quick city hop to a full multi-day road trip."
         />
 
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-2">
@@ -50,7 +50,7 @@ export function Taxi() {
             </div>
 
             <Reveal delay={0.1} className="mt-8">
-              <p className="text-xs font-semibold uppercase tracking-widest text-gold-300">Popular routes</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-gold-300">Popular destinations</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {route.map((r) => (
                   <span
@@ -82,7 +82,7 @@ export function Taxi() {
             <div className="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/10">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/fleet/van.jpg"
+                  src="/fleet/hiace-7.jpg"
                   alt="Mr Adventure island-wide taxi van"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -91,8 +91,8 @@ export function Taxi() {
               </div>
               <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-brand-950/90 to-transparent p-5">
                 <div>
-                  <p className="font-display text-lg font-bold text-white">From Arugam Bay to anywhere</p>
-                  <p className="text-sm text-white/75">Cars · SUVs · Vans · Group tours</p>
+                  <p className="font-display text-lg font-bold text-white">Door to door, anywhere</p>
+                  <p className="text-sm text-white/75">Cars · Vans · 27-seat coach · Airport runs</p>
                 </div>
               </div>
             </div>

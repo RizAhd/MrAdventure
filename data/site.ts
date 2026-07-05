@@ -5,7 +5,7 @@ export const site = {
   location: "Arugam Bay, Sri Lanka",
   serviceArea: "Island-wide, Sri Lanka",
   blurb:
-    "Wildlife safaris, scooter & tuk-tuk rentals, and reliable island-wide taxi service — run by local experts on Sri Lanka's east coast.",
+    "Reliable island-wide taxi & airport transfers across Sri Lanka — plus wildlife safaris and scooter & tuk-tuk rentals. Run by local experts you can trust.",
   // TODO: replace "#" with the real profile URLs when available.
   socials: {
     facebook: "#",
@@ -13,18 +13,19 @@ export const site = {
     tiktok: "#",
   },
   nav: [
+    { label: "Taxi", href: "#taxi" },
+    { label: "Fleet", href: "#fleet" },
+    { label: "Destinations", href: "#destinations" },
     { label: "Safaris", href: "#safaris" },
     { label: "Rentals", href: "#rentals" },
-    { label: "Taxi", href: "#taxi" },
-    { label: "Destinations", href: "#destinations" },
     { label: "Gallery", href: "#gallery" },
     { label: "Contact", href: "#contact" },
   ],
 } as const;
 
 export const stats = [
-  { value: "10+", label: "Years exploring" },
-  { value: "6", label: "Signature experiences" },
   { value: "All-island", label: "Taxi coverage" },
-  { value: "24/7", label: "WhatsApp support" },
+  { value: "24/7", label: "Airport transfers" },
+  { value: "9", label: "Vehicles in our fleet" },
+  { value: "10+", label: "Years on the road" },
 ];

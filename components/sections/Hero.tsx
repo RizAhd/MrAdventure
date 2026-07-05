@@ -3,25 +3,25 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { PawPrint, Bike, Car, Plane, Compass, Check, ChevronDown } from "lucide-react";
+import { Plane, Car, PawPrint, Bike, Compass, Check, ChevronDown } from "lucide-react";
 import { site } from "@/data/site";
 import { waEnquiry } from "@/lib/whatsapp";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 
 const slides = [
-  { src: "/hero/leopard.jpg", alt: "Sri Lankan leopard in the wild" },
-  { src: "/hero/elephant.jpg", alt: "Safari jeep watching a wild elephant" },
-  { src: "/hero/sigiriya.jpg", alt: "Sigiriya Lion Rock fortress" },
   { src: "/hero/beach.jpg", alt: "Golden sunset over a Sri Lankan beach" },
+  { src: "/hero/sigiriya.jpg", alt: "Sigiriya Lion Rock fortress" },
   { src: "/hero/fishermen.jpg", alt: "Traditional stilt fishermen on the south coast" },
+  { src: "/hero/elephant.jpg", alt: "Safari jeep watching a wild elephant" },
+  { src: "/hero/leopard.jpg", alt: "Sri Lankan leopard in the wild" },
 ];
 
 const quickPicks = [
+  { label: "Airport Transfer", subject: "an airport transfer", Icon: Plane },
+  { label: "Island Taxi", subject: "an island-wide taxi", Icon: Car },
   { label: "Safari", subject: "a wildlife safari", Icon: PawPrint },
-  { label: "Scooter", subject: "a scooter rental", Icon: Bike },
-  { label: "Tuk Tuk", subject: "a tuk-tuk rental", Icon: Car },
-  { label: "Taxi", subject: "an island-wide taxi / transfer", Icon: Plane },
+  { label: "Rental", subject: "a scooter or tuk-tuk rental", Icon: Bike },
 ];
 
 const container: Variants = {
@@ -43,7 +43,7 @@ export function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden bg-brand-950">
-      {/* Rotating background */}
+      {/* Rotating scenic background */}
       <AnimatePresence>
         <motion.div
           key={index}
@@ -64,12 +64,12 @@ export function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Legibility overlays — neutral (not green) so the real photo colours show through */}
+      {/* Legibility overlays — neutral so the real photo colours show through */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
 
       {/* Content */}
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 pb-20 pt-28 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 pb-24 pt-28 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">
         {/* Left: message */}
         <motion.div variants={container} initial="hidden" animate="show" className="lg:col-span-7">
           <motion.span
@@ -77,28 +77,33 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-300 backdrop-blur-sm"
           >
             <Compass className="h-4 w-4" />
-            Locally owned · {site.location}
+            Island-wide taxi · Airport transfers
           </motion.span>
 
           <motion.h1
             variants={item}
-            className="mt-6 max-w-2xl font-display text-[2.6rem] font-extrabold leading-[1.04] tracking-tight text-white text-balance sm:text-5xl lg:text-6xl"
+            className="mt-6 max-w-2xl font-display text-[2.7rem] font-bold leading-[1.03] tracking-tight text-white text-balance sm:text-5xl lg:text-6xl"
           >
-            Explore wild Sri Lanka, <span className="text-gold-400">the easy way.</span>
+            Sri Lanka, <span className="text-gold-400">door to door.</span>
           </motion.h1>
 
           <motion.p variants={item} className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
-            Leopard safaris, scooter &amp; tuk-tuk rentals, and reliable island-wide taxi — guided by
-            locals and booked in seconds on WhatsApp. No app, no booking fee.
+            Reliable island-wide taxi &amp; airport transfers — cars, vans and mini-buses for any group
+            size. Fixed fair prices, friendly local drivers, booked in seconds on WhatsApp.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href={waEnquiry("a booking")} target="_blank" rel="noopener noreferrer" className={buttonClasses("whatsapp", "lg")}>
+            <a
+              href={waEnquiry("an island-wide taxi / airport transfer")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonClasses("whatsapp", "lg")}
+            >
               <WhatsAppIcon className="h-5 w-5" />
-              Book on WhatsApp
+              Book a taxi on WhatsApp
             </a>
-            <a href="#safaris" className={buttonClasses("outline", "lg")}>
-              See our safaris
+            <a href="#fleet" className={buttonClasses("outline", "lg")}>
+              See the fleet
             </a>
           </motion.div>
 
@@ -122,10 +127,10 @@ export function Hero() {
           className="lg:col-span-5"
         >
           <div className="rounded-3xl border border-white/15 bg-brand-950/40 p-6 shadow-2xl backdrop-blur-md sm:p-7">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gold-300">Quick book</p>
-            <h2 className="mt-1 font-display text-2xl font-bold text-white">Start your adventure</h2>
+            <p className="text-xs font-semibold uppercase tracking-widest text-gold-300">Book your ride</p>
+            <h2 className="mt-1 font-display text-2xl font-bold text-white">Where can we take you?</h2>
             <p className="mt-1.5 text-sm text-white/70">
-              Tap what you&apos;d like — we&apos;ll reply on WhatsApp within minutes.
+              Tap a service — we&apos;ll reply on WhatsApp within minutes.
             </p>
 
             <div className="mt-5 grid grid-cols-2 gap-3">
@@ -137,10 +142,10 @@ export function Hero() {
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-4 py-3.5 text-white transition-colors hover:border-gold-400/50 hover:bg-white/10"
                 >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gold-500/90 text-brand-950 transition-transform group-hover:scale-110">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gold-500/90 text-brand-950 transition-transform group-hover:scale-110">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <span className="text-sm font-semibold">{label}</span>
+                  <span className="text-sm font-semibold leading-tight">{label}</span>
                 </a>
               ))}
             </div>
@@ -180,8 +185,8 @@ export function Hero() {
 
       {/* Scroll cue */}
       <a
-        href="#safaris"
-        aria-label="Scroll to content"
+        href="#taxi"
+        aria-label="Scroll to taxi service"
         className="absolute bottom-5 right-5 z-10 hidden h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white/80 transition-colors hover:bg-white/10 lg:flex"
       >
         <ChevronDown className="h-5 w-5 animate-bounce" />

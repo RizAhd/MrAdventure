@@ -4,17 +4,17 @@ export type Destination = {
   blurb: string;
 };
 
-/** Poster route: "Arugam Bay to South — Ella, Pasikuda, Trinco, Dambulla, Sigiriya". */
+// We drive you anywhere on the island — a natural west → central → hill → south → east loop.
 export const destinations: Destination[] = [
   {
-    name: "Arugam Bay",
-    image: "/destinations/arugam-bay.jpg",
-    blurb: "World-class surf, golden beaches and our home base on the east coast.",
+    name: "Colombo",
+    image: "/destinations/colombo.jpg",
+    blurb: "The vibrant capital — your airport gateway, with Galle Face, markets and nightlife.",
   },
   {
-    name: "Ella",
-    image: "/destinations/ella-nine-arch.jpg",
-    blurb: "Misty hill country, tea trails and the iconic Nine Arch Bridge.",
+    name: "Kandy",
+    image: "/destinations/kandy.jpg",
+    blurb: "The hill capital and the sacred Temple of the Tooth beside the lake.",
   },
   {
     name: "Sigiriya",
@@ -25,6 +25,26 @@ export const destinations: Destination[] = [
     name: "Dambulla",
     image: "/destinations/dambulla.jpg",
     blurb: "The golden cave temple — centuries of murals and Buddha statues.",
+  },
+  {
+    name: "Ella",
+    image: "/destinations/ella-nine-arch.jpg",
+    blurb: "Misty hill country, tea trails and the iconic Nine Arch Bridge.",
+  },
+  {
+    name: "Galle",
+    image: "/destinations/galle.jpg",
+    blurb: "The Dutch fort city — ramparts, lighthouse and boutique lanes by the sea.",
+  },
+  {
+    name: "Matara",
+    image: "/destinations/matara.jpg",
+    blurb: "Southern coast town with wild surf, golden beaches and rocky headlands.",
+  },
+  {
+    name: "Arugam Bay",
+    image: "/destinations/arugam-bay.jpg",
+    blurb: "World-class surf, golden beaches and our home base on the east coast.",
   },
   {
     name: "Pasikuda",
