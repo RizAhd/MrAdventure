@@ -14,7 +14,7 @@ export const safaris: Service[] = [
     slug: "kumana-safari",
     title: "Kumana Safari",
     category: "safari",
-    image: "/gallery/leopard-2.jpg",
+    image: "/hero/leopard.jpg",
     blurb:
       "Track leopards, elephants and rare wetland birds through Kumana National Park with an experienced local guide.",
     features: ["Leopards & elephants", "Half or full day", "Private jeep & guide"],
@@ -24,7 +24,7 @@ export const safaris: Service[] = [
     slug: "lagoon-safari",
     title: "Lagoon Safari",
     category: "safari",
-    image: "/gallery/birds-sunset.jpg",
+    image: "/gallery/crocodiles.jpg",
     blurb:
       "Glide across mirror-calm lagoons at golden hour among crocodiles, buffalo and hundreds of water birds.",
     features: ["Birdlife & crocodiles", "Sunrise / sunset", "Great for photography"],

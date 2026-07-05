@@ -9,12 +9,13 @@ import { waEnquiry } from "@/lib/whatsapp";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 
+// Taxi-themed: the places we drive you to — "travel anywhere in Sri Lanka".
 const slides = [
-  { src: "/hero/beach.jpg", alt: "Golden sunset over a Sri Lankan beach" },
+  { src: "/destinations/galle.jpg", alt: "Galle Fort lighthouse on the south coast" },
   { src: "/hero/sigiriya.jpg", alt: "Sigiriya Lion Rock fortress" },
-  { src: "/hero/fishermen.jpg", alt: "Traditional stilt fishermen on the south coast" },
-  { src: "/hero/elephant.jpg", alt: "Safari jeep watching a wild elephant" },
-  { src: "/hero/leopard.jpg", alt: "Sri Lankan leopard in the wild" },
+  { src: "/hero/beach.jpg", alt: "Golden sunset over a Sri Lankan beach" },
+  { src: "/destinations/kandy.jpg", alt: "The Temple of the Tooth in Kandy" },
+  { src: "/destinations/ella-nine-arch.jpg", alt: "Nine Arch Bridge in the Ella hills" },
 ];
 
 const quickPicks = [
@@ -87,7 +88,11 @@ export function Hero() {
             Sri Lanka, <span className="text-gold-400">door to door.</span>
           </motion.h1>
 
-          <motion.p variants={item} className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
+          <motion.p variants={item} className="mt-4 text-base font-semibold text-gold-300 sm:text-lg">
+            Travel anywhere in Sri Lanka — your island-wide Taxi Service.
+          </motion.p>
+
+          <motion.p variants={item} className="mt-4 max-w-xl text-lg leading-relaxed text-white/85">
             Reliable island-wide taxi &amp; airport transfers — cars, vans and mini-buses for any group
             size. Fixed fair prices, friendly local drivers, booked in seconds on WhatsApp.
           </motion.p>

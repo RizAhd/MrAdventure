@@ -6,11 +6,10 @@ export const site = {
   serviceArea: "Island-wide, Sri Lanka",
   blurb:
     "Reliable island-wide taxi & airport transfers across Sri Lanka — plus wildlife safaris and scooter & tuk-tuk rentals. Run by local experts you can trust.",
-  // TODO: replace "#" with the real profile URLs when available.
   socials: {
-    facebook: "#",
-    instagram: "#",
-    tiktok: "#",
+    facebook: "https://www.facebook.com/share/p/185CRRJ4FF/",
+    instagram: "https://www.instagram.com/mradventure40",
+    tiktok: "#", // TODO: add real TikTok link when available
   },
   nav: [
     { label: "Taxi", href: "#taxi" },

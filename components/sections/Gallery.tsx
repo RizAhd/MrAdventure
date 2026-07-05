@@ -6,6 +6,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { gallery } from "@/data/gallery";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { HeroCollage } from "@/components/ui/modern-hero-section";
+
+// Curated gallery indices used for the desktop floating collage (7 photos).
+const collageIdx = [0, 1, 2, 3, 4, 6, 7];
 
 export function Gallery() {
   const [index, setIndex] = useState<number | null>(null);
@@ -33,34 +37,48 @@ export function Gallery() {
   }, [open, close, go]);
 
   return (
-    <section id="gallery" className="section bg-brand-50">
+    <section id="gallery" className="section overflow-hidden bg-brand-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Gallery"
           title="Real moments, real adventures"
           subtitle="Every photo here is from an actual Mr Adventure trip — the wildlife, the water, and the smiles."
         />
+      </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4">
+      {/* Desktop: floating photo collage */}
+      <HeroCollage
+        photos={collageIdx.map((i) => gallery[i])}
+        onSelect={(k) => setIndex(collageIdx[k])}
+        stats={[
+          { value: "10+", label: "Years on the road" },
+          { value: "24/7", label: "WhatsApp support" },
+        ]}
+        className="mt-4 hidden lg:block"
+      />
+
+      {/* Mobile / tablet: horizontal swipe carousel */}
+      <div className="mt-10 lg:hidden">
+        <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:px-6">
           {gallery.map((photo, i) => (
             <button
               key={photo.src}
               type="button"
               onClick={() => setIndex(i)}
-              className="group relative aspect-square overflow-hidden rounded-2xl ring-1 ring-brand-950/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500"
               aria-label={`Open photo: ${photo.alt}`}
+              className="relative aspect-[3/4] w-44 shrink-0 snap-start overflow-hidden rounded-2xl ring-1 ring-brand-950/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 sm:w-52"
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                sizes="(max-width: 640px) 176px, 208px"
+                className="object-cover"
               />
-              <span className="absolute inset-0 bg-brand-950/0 transition-colors group-hover:bg-brand-950/15" />
             </button>
           ))}
         </div>
+        <p className="mt-3 text-center text-xs font-medium text-ink/50">← swipe to explore →</p>
       </div>
 
       {/* Lightbox */}

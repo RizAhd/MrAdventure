@@ -77,10 +77,10 @@ export function Fleet() {
                   href={waEnquiry(v.name)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-whatsapp-dark hover:underline"
+                  className={buttonClasses("whatsapp", "sm", "mt-4 w-full")}
                 >
                   <WhatsAppIcon className="h-4 w-4" />
-                  Enquire
+                  Book on WhatsApp
                 </a>
               </div>
             </article>
