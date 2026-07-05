@@ -46,7 +46,7 @@ export function Hero() {
           <div
             key={b.src}
             style={{ animationDelay: b.delay }}
-            className={`animate-float-up absolute aspect-[4/3] overflow-hidden rounded-2xl opacity-[0.28] shadow-2xl ring-1 ring-white/10 blur-[1px] ${b.cls}`}
+            className={`animate-float-up absolute aspect-[4/3] overflow-hidden rounded-2xl opacity-[0.42] shadow-2xl ring-1 ring-white/10 blur-[0.5px] ${b.cls}`}
           >
             <Image src={b.src} alt={b.alt} fill sizes="256px" className="object-cover" />
           </div>
