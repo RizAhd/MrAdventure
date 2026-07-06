@@ -11,6 +11,7 @@ ideally, **replace them with Mr Adventure's own photos** over time.
 
 | File | Subject | Source |
 |------|---------|--------|
+| `public/destinations/colombo-airport.jpg` | Colombo Airport (Bandaranaike Intl, CMB) · Zarniwoop und Zarquon · CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:IndiGo_A321_VT-IMG_at_Colombo.jpg |
 | `public/destinations/sigiriya.jpg` | Sigiriya | https://commons.wikimedia.org/wiki/File:Sigiriya_(141688197).jpeg |
 | `public/destinations/ella-nine-arch.jpg` | Nine Arch Bridge, Ella | https://commons.wikimedia.org/wiki/File:The_Nine_Arches_Bridge.jpg |
 | `public/destinations/dambulla.jpg` | Dambulla | https://commons.wikimedia.org/wiki/File:Dambulla-buddhastupa.jpg |

@@ -7,9 +7,14 @@ export type Destination = {
 // We drive you anywhere on the island — a natural west → central → hill → south → east loop.
 export const destinations: Destination[] = [
   {
+    name: "Colombo Airport",
+    image: "/destinations/colombo-airport.jpg",
+    blurb: "Bandaranaike International (CMB) — we meet you at arrivals and drive you anywhere on the island.",
+  },
+  {
     name: "Colombo",
     image: "/destinations/colombo.jpg",
-    blurb: "The vibrant capital — your airport gateway, with Galle Face, markets and nightlife.",
+    blurb: "The vibrant capital — Galle Face, markets and nightlife by the Indian Ocean.",
   },
   {
     name: "Kandy",
