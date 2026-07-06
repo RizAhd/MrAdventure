@@ -41,8 +41,8 @@ export function Navbar() {
       <nav className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand */}
         <a href="#top" className="flex items-center gap-3" aria-label={site.fullName}>
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-300 to-gold-600 text-brand-950 shadow-md ring-1 ring-black/10">
-            <Car className="h-6 w-6" strokeWidth={2.2} />
+          <span className="relative h-11 w-11 overflow-hidden rounded-2xl ring-1 ring-gold-500/70 shadow-md">
+            <Image src="/logos/logo-badge.png" alt={site.fullName} fill sizes="44px" className="object-cover" />
           </span>
           <span className="leading-tight">
             <span
