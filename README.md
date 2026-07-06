@@ -31,10 +31,15 @@ Images live in [`public/`](public/). To re-import/optimize source photos, edit t
 The original photos are kept in `Places/`, `Vehicles/`, `logos/` as backup.
 
 ## Deploy (free)
-1. Push this folder to a GitHub repo.
-2. Import it at **vercel.com** → it auto-detects Next.js and deploys.
-3. (Optional) add a custom domain such as `mradventure.lk`.
-4. After deploying, set the real site URL in `metadataBase` inside [`app/layout.tsx`](app/layout.tsx).
+The site is a static export deployed to **GitHub Pages** by GitHub Actions
+([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
+1. In the repo, set **Settings → Pages → Source = "GitHub Actions"** (one-time).
+2. Push to `main` — the workflow runs `npm run build`, then publishes the `out/` folder.
+   The live site is at `https://<user>.github.io/MrAdventure/`.
+3. The `/MrAdventure/` sub-path is handled by `basePath` in [`next.config.ts`](next.config.ts)
+   and the custom [`image-loader.ts`](image-loader.ts); if you deploy to a root domain
+   (e.g. Vercel or `mradventure.lk`), clear `basePath` there.
+4. Set the real site URL in `metadataBase` inside [`app/layout.tsx`](app/layout.tsx).
 
 ## Still to do before launch
 - [ ] Add real **Facebook / Instagram / TikTok** URLs in `data/site.ts` (currently `#`).
