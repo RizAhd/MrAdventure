@@ -8,7 +8,7 @@ import { Fleet } from "@/components/sections/Fleet";
 import { Gallery } from "@/components/sections/Gallery";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { FAQ } from "@/components/sections/FAQ";
+import { FAQ, faqs } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
 import { site } from "@/data/site";
 import { PHONE_TEL } from "@/lib/whatsapp";
@@ -39,10 +39,21 @@ const jsonLd = {
   ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
 };
 
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <Hero />
       <Stats />
       <Taxi />
@@ -52,8 +63,8 @@ export default function Home() {
       <Rentals />
       <Gallery />
       <WhyUs />
-      <Worldwide />
       <Testimonials />
+      <FAQ />
       <Contact />
     </>
   );
