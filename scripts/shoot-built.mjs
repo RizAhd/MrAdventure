@@ -17,7 +17,7 @@ await d.goto(URL, { waitUntil: "load", timeout: 60000 });
 await wait(4500);
 await d.screenshot({ path: `${OUT}\\b-hero-d.png` });
 console.log("hero-d");
-for (const id of ["worldwide", "gallery"]) {
+for (const id of ["faq", "fleet"]) {
   await scrollTo(d, id);
   await wait(2200);
   await d.screenshot({ path: `${OUT}\\b-${id}-d.png` });
