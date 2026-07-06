@@ -1,4 +1,5 @@
-import { MapPin, Phone, Car } from "lucide-react";
+import Image from "next/image";
+import { MapPin, Phone } from "lucide-react";
 import { site } from "@/data/site";
 import { allServices } from "@/data/services";
 import { waEnquiry, PHONE_TEL, PHONE_DISPLAY } from "@/lib/whatsapp";
@@ -17,8 +18,8 @@ export function Footer() {
         {/* Brand */}
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-300 to-gold-600 text-brand-950 shadow-md">
-              <Car className="h-7 w-7" strokeWidth={2.2} />
+            <span className="relative h-12 w-12 overflow-hidden rounded-2xl ring-1 ring-gold-500/70 shadow-md">
+              <Image src="/logos/logo-badge.png" alt={site.fullName} fill sizes="48px" className="object-cover" />
             </span>
             <span className="leading-tight">
               <span className="block font-display text-lg font-extrabold text-white">Mr Adventure</span>

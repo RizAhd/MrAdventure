@@ -14,11 +14,10 @@ const src = byNum("logos", 38); // yellow-bg branded logo (car line-art + wordma
 const meta = await sharp(src).metadata();
 console.log(`  source logo: ${meta.width}x${meta.height}`);
 
-// Enhanced square badge — pad to square with the brand yellow, upscale, sharpen, lossless PNG.
-const yellow = { r: 245, g: 179, b: 1 };
+// Enhanced square badge — centre-crop to square (logo has margin, nothing is cut), upscale, sharpen.
 async function make(out, size) {
   await sharp(src)
-    .resize(size, size, { fit: "contain", background: yellow, kernel: "lanczos3" })
+    .resize(size, size, { fit: "cover", position: "centre", kernel: "lanczos3" })
     .sharpen({ sigma: 1.1 })
     .png({ compressionLevel: 9 })
     .toFile(out);
