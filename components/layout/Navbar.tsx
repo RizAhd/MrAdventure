@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Car } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { site } from "@/data/site";
 import { waEnquiry, PHONE_TEL, PHONE_DISPLAY } from "@/lib/whatsapp";
