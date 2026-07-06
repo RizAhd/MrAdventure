@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local-only front-end skills library (never push)
 /skills/
+
+# claude code machine-local settings (never push)
+/.claude/settings.local.json
