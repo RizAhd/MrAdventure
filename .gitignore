@@ -45,3 +45,23 @@ next-env.d.ts
 
 # claude code machine-local settings (never push)
 /.claude/settings.local.json
+
+# static-export build output must never be committed at the repo root
+# (GitHub Actions builds it into out/ and deploys that — see .github/workflows/deploy.yml)
+/index.html
+/index.txt
+/404.html
+/404/
+/_next/
+/_not-found/
+/__next.*.txt
+/icon.png
+/apple-icon.png
+/favicon.ico
+/og.jpg
+/.nojekyll
+/hero/
+/fleet/
+/gallery/
+/destinations/
+/logos/logo-badge.png
