@@ -8,7 +8,7 @@ import { Fleet } from "@/components/sections/Fleet";
 import { Gallery } from "@/components/sections/Gallery";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { Worldwide } from "@/components/sections/Worldwide";
+import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
 import { site } from "@/data/site";
 import { PHONE_TEL } from "@/lib/whatsapp";
