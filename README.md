@@ -32,17 +32,20 @@ The original photos are kept in `Places/`, `Vehicles/`, `logos/` as backup.
 
 ## Deploy (free)
 The site is a static export deployed to **GitHub Pages** by GitHub Actions
-([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) and served from the
+([`.github/workflows/nextjs.yml`](.github/workflows/nextjs.yml)) and served from the
 custom domain **https://mradventure.lk/**:
 1. In the repo, set **Settings → Pages → Source = "GitHub Actions"** (one-time).
 2. In **Settings → Pages → Custom domain**, enter `mradventure.lk` (one-time). The
-   [`public/CNAME`](public/CNAME) file keeps that setting on every deploy.
-3. Push to `main` — the workflow runs `npm run build`, then publishes the `out/` folder.
+   [`public/CNAME`](public/CNAME) file (and the workflow's CNAME step) keep that setting
+   on every deploy.
+3. Push to `main` — the workflow runs `next build`, then publishes the `out/` folder.
 4. Because the site serves from the **domain root**, there is **no `basePath`**
-   ([`next.config.ts`](next.config.ts)) and [`image-loader.ts`](image-loader.ts) returns
-   paths unchanged. (If you ever move back to `<user>.github.io/MrAdventure/`, restore the
-   `basePath: "/MrAdventure"` and the image-loader prefix.)
+   ([`next.config.ts`](next.config.ts)) and images use `unoptimized: true`. (If you ever
+   move back to `<user>.github.io/MrAdventure/`, add `basePath: "/MrAdventure"` and a
+   custom image loader that prefixes local image paths.)
 5. The site URL is set in `metadataBase` inside [`app/layout.tsx`](app/layout.tsx).
+6. **Use only one deploy workflow.** Two workflows publishing to Pages on the same push
+   race each other and cause broken/inconsistent deploys — keep only `nextjs.yml`.
 
 ### DNS at Cloudflare
 Point the domain at GitHub Pages (Cloudflare proxy can stay **on**, orange cloud):
