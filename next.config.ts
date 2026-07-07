@@ -1,14 +1,12 @@
 import type { NextConfig } from "next";
 
-// Deployed as a GitHub Pages project site at https://rizahd.github.io/MrAdventure/
-// so we need a static export, a basePath, and a custom image loader that adds the
-// basePath to image URLs (next/image doesn't do this for static/unoptimized images).
-const isProd = process.env.NODE_ENV === "production";
-const repoBase = "/MrAdventure";
-
+// Deployed as a static export on GitHub Pages, served from the custom domain
+// https://mradventure.lk/ (set via the public/CNAME file). Because the site is
+// served from the domain root (not a /MrAdventure/ subpath), we do NOT set a
+// basePath. We still need `output: "export"` for the static build and a custom
+// image loader (next/image doesn't optimize images in a static export).
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: isProd ? repoBase : "",
   trailingSlash: true,
   images: {
     loader: "custom",

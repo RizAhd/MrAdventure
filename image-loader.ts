@@ -1,9 +1,7 @@
-// Custom next/image loader for static export on GitHub Pages.
-// Prepends the Pages basePath to local images (next/image does not do this for
-// unoptimized images), and leaves absolute URLs untouched.
-const BASE_PATH = process.env.NODE_ENV === "production" ? "/MrAdventure" : "";
-
+// Custom next/image loader for the static export.
+// The site is served from the custom domain root (https://mradventure.lk/), so
+// local image paths already resolve correctly and need no basePath prefix.
+// Absolute (http/https) URLs are returned untouched.
 export default function imageLoader({ src }: { src: string; width: number; quality?: number }) {
-  if (/^https?:\/\//.test(src)) return src;
-  return `${BASE_PATH}${src}`;
+  return src;
 }

@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rizahd.github.io/MrAdventure/"),
+  metadataBase: new URL("https://mradventure.lk/"),
   title: {
     default: "Mr Adventure Tours & Travels | Sri Lanka Taxi, Airport Transfers & Tours",
     template: "%s | Mr Adventure Tours & Travels",

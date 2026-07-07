@@ -32,14 +32,25 @@ The original photos are kept in `Places/`, `Vehicles/`, `logos/` as backup.
 
 ## Deploy (free)
 The site is a static export deployed to **GitHub Pages** by GitHub Actions
-([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
+([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) and served from the
+custom domain **https://mradventure.lk/**:
 1. In the repo, set **Settings → Pages → Source = "GitHub Actions"** (one-time).
-2. Push to `main` — the workflow runs `npm run build`, then publishes the `out/` folder.
-   The live site is at `https://<user>.github.io/MrAdventure/`.
-3. The `/MrAdventure/` sub-path is handled by `basePath` in [`next.config.ts`](next.config.ts)
-   and the custom [`image-loader.ts`](image-loader.ts); if you deploy to a root domain
-   (e.g. Vercel or `mradventure.lk`), clear `basePath` there.
-4. Set the real site URL in `metadataBase` inside [`app/layout.tsx`](app/layout.tsx).
+2. In **Settings → Pages → Custom domain**, enter `mradventure.lk` (one-time). The
+   [`public/CNAME`](public/CNAME) file keeps that setting on every deploy.
+3. Push to `main` — the workflow runs `npm run build`, then publishes the `out/` folder.
+4. Because the site serves from the **domain root**, there is **no `basePath`**
+   ([`next.config.ts`](next.config.ts)) and [`image-loader.ts`](image-loader.ts) returns
+   paths unchanged. (If you ever move back to `<user>.github.io/MrAdventure/`, restore the
+   `basePath: "/MrAdventure"` and the image-loader prefix.)
+5. The site URL is set in `metadataBase` inside [`app/layout.tsx`](app/layout.tsx).
+
+### DNS at Cloudflare
+Point the domain at GitHub Pages (Cloudflare proxy can stay **on**, orange cloud):
+- Apex `mradventure.lk` → four **A** records: `185.199.108.153`, `185.199.109.153`,
+  `185.199.110.153`, `185.199.111.153` (and optionally the matching **AAAA** records).
+- `www` → **CNAME** → `rizahd.github.io`.
+- In Cloudflare **SSL/TLS → Overview**, set encryption mode to **Full** (not Flexible), or
+  you'll get a redirect loop.
 
 ## Still to do before launch
 - [ ] Add real **Facebook / Instagram / TikTok** URLs in `data/site.ts` (currently `#`).
