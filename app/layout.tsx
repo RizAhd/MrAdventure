@@ -86,8 +86,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="flex min-h-full flex-col bg-sand text-ink">
         <Navbar />
-        {/* pb on mobile so the sticky action bar never covers footer content */}
-        <main className="flex-1 pb-16 lg:pb-0">{children}</main>
+        {/* small breathing room at the bottom on mobile */}
+        <main className="flex-1 pb-8 lg:pb-0">{children}</main>
         <Footer />
         <FloatingWhatsApp />
         <MobileActionBar />
