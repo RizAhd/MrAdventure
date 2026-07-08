@@ -58,7 +58,9 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem; /* offset sticky navbar for anchor links */
+    /* navbar is h-[4.5rem] (72px); add ~0.25rem breathing room so anchored
+       headings land flush just under it instead of ~16px too low */
+    scroll-padding-top: 4.75rem;
   }
   body {
     background-color: var(--color-sand);

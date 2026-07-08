@@ -118,13 +118,14 @@ export function Footer() {
           <p className="font-semibold uppercase tracking-widest text-gold-400">{site.tagline}</p>
           <p>© {new Date().getFullYear()} {site.fullName}. All rights reserved.</p>
         </div>
-        <div className="pb-5 text-center text-[0.7rem] text-white/40">
+        {/* Extra bottom padding on mobile so the fixed MobileActionBar never covers this. */}
+        <div className="pb-[calc(5.5rem+env(safe-area-inset-bottom))] text-center text-[0.7rem] text-white/55 lg:pb-5">
           Built by{" "}
           <a
             href="https://www.linkedin.com/in/riflan/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-white/60 underline-offset-2 transition-colors hover:text-gold-400 hover:underline"
+            className="font-medium text-white/75 underline-offset-2 transition-colors hover:text-gold-400 hover:underline"
           >
             Riflan Mohamed
           </a>
