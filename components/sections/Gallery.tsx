@@ -7,6 +7,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { gallery } from "@/data/gallery";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { HeroCollage } from "@/components/ui/modern-hero-section";
+import { blurProps } from "@/lib/utils";
 
 // Curated gallery indices used for the desktop floating collage (7 photos).
 const collageIdx = [0, 1, 2, 3, 4, 6, 7];
@@ -74,6 +75,7 @@ export function Gallery() {
                 fill
                 sizes="(max-width: 640px) 176px, 208px"
                 className="object-cover"
+                {...blurProps(photo.src)}
               />
             </button>
           ))}

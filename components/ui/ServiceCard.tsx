@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import type { Service } from "@/data/services";
 import { waEnquiry } from "@/lib/whatsapp";
+import { blurProps } from "@/lib/utils";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 
@@ -16,6 +17,7 @@ export function ServiceCard({ service }: { service: Service }) {
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
+          {...blurProps(service.image)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/50 to-transparent" />
         <h3 className="absolute bottom-4 left-5 font-display text-2xl font-bold text-white drop-shadow">

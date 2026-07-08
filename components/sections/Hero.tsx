@@ -10,10 +10,10 @@ import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 
 const slides = [
-  { src: "/destinations/galle.jpg", alt: "Galle Fort lighthouse on the south coast" },
-  { src: "/hero/beach.jpg", alt: "Golden sunset over a Sri Lankan beach" },
-  { src: "/hero/sigiriya.jpg", alt: "Sigiriya Lion Rock fortress" },
-  { src: "/destinations/ella-nine-arch.jpg", alt: "Nine Arch Bridge in the Ella hills" },
+  { src: "/destinations/galle.webp", alt: "Galle Fort lighthouse on the south coast" },
+  { src: "/hero/beach.webp", alt: "Golden sunset over a Sri Lankan beach" },
+  { src: "/hero/sigiriya.webp", alt: "Sigiriya Lion Rock fortress" },
+  { src: "/destinations/ella-nine-arch.webp", alt: "Nine Arch Bridge in the Ella hills" },
 ];
 
 const passengerOptions = ["1–2 passengers", "3–4 passengers", "5–7 passengers", "8–14 passengers", "15+ passengers"];

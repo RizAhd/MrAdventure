@@ -5,6 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { waEnquiry } from "@/lib/whatsapp";
+import { blurProps } from "@/lib/utils";
 
 const features = [
   { Icon: Plane, title: "Airport Drop & Pickup", text: "On-time transfers to and from Colombo (CMB) and Mattala airports, day or night." },
@@ -82,11 +83,12 @@ export function Taxi() {
             <div className="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/10">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/fleet/hiace-7.jpg"
+                  src="/fleet/hiace-7.webp"
                   alt="Mr Adventure island-wide taxi van"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
+                  {...blurProps("/fleet/hiace-7.webp")}
                 />
               </div>
               <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-brand-950/90 to-transparent p-5">

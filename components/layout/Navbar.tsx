@@ -13,12 +13,34 @@ import { WhatsAppIcon } from "@/components/ui/icons";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll-spy: highlight the nav link for the section currently in view.
+  useEffect(() => {
+    const ids = site.nav.map((n) => n.href.replace("#", ""));
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(`#${visible[0].target.id}`);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   // Lock body scroll when the mobile menu is open
@@ -42,7 +64,7 @@ export function Navbar() {
         {/* Brand */}
         <a href="#top" className="flex items-center gap-3" aria-label={site.fullName}>
           <span className="relative h-11 w-11 overflow-hidden rounded-2xl ring-1 ring-gold-500/70 shadow-md">
-            <Image src="/logos/logo-badge.png" alt={site.fullName} fill sizes="44px" className="object-cover" />
+            <Image src="/logos/logo-badge.webp" alt={site.fullName} fill sizes="44px" className="object-cover" />
           </span>
           <span className="leading-tight">
             <span
@@ -66,19 +88,23 @@ export function Navbar() {
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-7 lg:flex">
-          {site.nav.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className={cn(
-                  "text-sm font-semibold transition-colors hover:text-gold-500",
-                  solid ? "text-brand-800" : "text-white/90",
-                )}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {site.nav.map((item) => {
+            const isActive = active === item.href;
+            return (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={cn(
+                    "text-sm font-semibold transition-colors hover:text-gold-500",
+                    isActive ? "text-gold-500" : solid ? "text-brand-800" : "text-white/90",
+                  )}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Desktop CTA */}

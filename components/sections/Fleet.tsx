@@ -8,6 +8,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { waEnquiry } from "@/lib/whatsapp";
+import { blurProps } from "@/lib/utils";
 
 export function Fleet() {
   const track = useRef<HTMLDivElement>(null);
@@ -64,6 +65,7 @@ export function Fleet() {
                   fill
                   sizes="304px"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  {...blurProps(v.image)}
                 />
                 <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-brand-900 shadow-sm backdrop-blur-sm">
                   <Users className="h-3.5 w-3.5 text-brand-700" />

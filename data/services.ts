@@ -14,7 +14,7 @@ export const safaris: Service[] = [
     slug: "kumana-safari",
     title: "Kumana Safari",
     category: "safari",
-    image: "/hero/leopard.jpg",
+    image: "/hero/leopard.webp",
     blurb:
       "Track leopards, elephants and rare wetland birds through Kumana National Park with an experienced local guide.",
     features: ["Leopards & elephants", "Half or full day", "Private jeep & guide"],
@@ -24,7 +24,7 @@ export const safaris: Service[] = [
     slug: "lagoon-safari",
     title: "Lagoon Safari",
     category: "safari",
-    image: "/gallery/crocodiles.jpg",
+    image: "/gallery/crocodiles.webp",
     blurb:
       "Glide across mirror-calm lagoons at golden hour among crocodiles, buffalo and hundreds of water birds.",
     features: ["Birdlife & crocodiles", "Sunrise / sunset", "Great for photography"],
@@ -34,7 +34,7 @@ export const safaris: Service[] = [
     slug: "boat-safari",
     title: "Boat Safari",
     category: "safari",
-    image: "/gallery/boat-1.jpg",
+    image: "/gallery/boat-1.webp",
     blurb:
       "A peaceful mangrove boat ride through hidden waterways — wildlife, nature and calm off-the-map scenery.",
     features: ["Mangrove waterways", "Life jackets provided", "Family friendly"],
@@ -47,7 +47,7 @@ export const rentals: Service[] = [
     slug: "scooter-rent",
     title: "Scooter Rent",
     category: "rental",
-    image: "/gallery/scooter-couple.jpg",
+    image: "/gallery/scooter-couple.webp",
     blurb:
       "Explore Arugam Bay and beyond at your own pace on a reliable, well-maintained automatic scooter.",
     features: ["Automatic & easy", "Helmets included", "Daily / weekly rates"],
@@ -57,7 +57,7 @@ export const rentals: Service[] = [
     slug: "tuktuk-rent",
     title: "Tuk Tuk Rent",
     category: "rental",
-    image: "/fleet/tuktuk.jpg",
+    image: "/fleet/tuktuk.webp",
     blurb:
       "The classic Sri Lankan three-wheeler — fun, shaded and perfect for road-tripping the coast with friends.",
     features: ["Self-drive or driver", "Roomy for luggage", "Flexible pickup"],
@@ -67,7 +67,7 @@ export const rentals: Service[] = [
     slug: "bicycle-rent",
     title: "Bicycle Rent",
     category: "rental",
-    image: "/fleet/bicycle.jpg",
+    image: "/fleet/bicycle.webp",
     blurb:
       "Pedal the palm-lined lanes and beaches at a relaxed, eco-friendly pace. Great for short local trips.",
     features: ["Well-serviced bikes", "Locks provided", "Hourly / daily"],

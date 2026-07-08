@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
+import { BackToTop } from "@/components/layout/BackToTop";
 
 const GA_MEASUREMENT_ID = "G-3LFS8T2RJ4";
 

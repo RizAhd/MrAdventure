@@ -19,7 +19,7 @@ export function Footer() {
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3">
             <span className="relative h-12 w-12 overflow-hidden rounded-2xl ring-1 ring-gold-500/70 shadow-md">
-              <Image src="/logos/logo-badge.png" alt={site.fullName} fill sizes="48px" className="object-cover" />
+              <Image src="/logos/logo-badge.webp" alt={site.fullName} fill sizes="48px" className="object-cover" />
             </span>
             <span className="leading-tight">
               <span className="block font-display text-lg font-extrabold text-white">Mr Adventure</span>

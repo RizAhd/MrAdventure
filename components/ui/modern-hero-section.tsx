@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn, blurProps } from "@/lib/utils";
 
 export type CollagePhoto = { src: string; alt: string };
 
@@ -59,7 +59,7 @@ const HeroCollage = React.forwardRef<HTMLDivElement, HeroCollageProps>(
                     s.z,
                   )}
                 >
-                  <Image src={photo.src} alt={photo.alt} fill sizes="300px" className="object-cover" />
+                  <Image src={photo.src} alt={photo.alt} fill sizes="300px" className="object-cover" {...blurProps(photo.src)} />
                 </button>
               );
             })}

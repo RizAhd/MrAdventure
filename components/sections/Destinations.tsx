@@ -4,6 +4,7 @@ import { destinations } from "@/data/destinations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { waEnquiry } from "@/lib/whatsapp";
+import { blurProps } from "@/lib/utils";
 
 export function Destinations() {
   return (
@@ -29,6 +30,7 @@ export function Destinations() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  {...blurProps(d.image)}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/25 to-transparent" />
                 <div className="absolute right-4 top-4 flex h-10 w-10 translate-y-1 items-center justify-center rounded-full bg-gold-500 text-brand-950 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
