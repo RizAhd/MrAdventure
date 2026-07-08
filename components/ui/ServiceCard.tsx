@@ -9,7 +9,7 @@ import { WhatsAppIcon } from "@/components/ui/icons";
 export function ServiceCard({ service }: { service: Service }) {
   const cta = service.category === "safari" ? "Book on WhatsApp" : "Rent on WhatsApp";
   return (
-    <article className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-brand-950/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <article className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-brand-950/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:translate-y-0">
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
           src={service.image}

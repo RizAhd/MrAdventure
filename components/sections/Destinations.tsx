@@ -22,7 +22,7 @@ export function Destinations() {
                 href={waEnquiry(`a trip to ${d.name}`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative block h-80 overflow-hidden rounded-3xl shadow-sm ring-1 ring-brand-950/5"
+                className="group relative block h-80 overflow-hidden rounded-3xl shadow-sm ring-1 ring-brand-950/5 transition-transform duration-200 active:scale-[0.98]"
               >
                 <Image
                   src={d.image}
