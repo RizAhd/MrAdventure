@@ -3,13 +3,15 @@ import { MapPin, Phone } from "lucide-react";
 import { site } from "@/data/site";
 import { allServices } from "@/data/services";
 import { waEnquiry, PHONE_TEL, PHONE_DISPLAY } from "@/lib/whatsapp";
-import { WhatsAppIcon, FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/ui/icons";
+import { WhatsAppIcon, FacebookIcon, InstagramIcon, TikTokIcon, GoogleIcon } from "@/components/ui/icons";
 
+// Profiles with no URL yet are dropped rather than rendered as dead `href="#"`.
 const socialLinks = [
+  { href: site.socials.google, label: "Google Business Profile", Icon: GoogleIcon },
   { href: site.socials.facebook, label: "Facebook", Icon: FacebookIcon },
   { href: site.socials.instagram, label: "Instagram", Icon: InstagramIcon },
   { href: site.socials.tiktok, label: "TikTok", Icon: TikTokIcon },
-];
+].filter((s) => s.href);
 
 export function Footer() {
   return (

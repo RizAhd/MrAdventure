@@ -48,7 +48,14 @@ const jsonLd = {
     closes: "23:59",
   },
   // Links that verify this is the same business across the web (strong local-SEO signal).
-  sameAs: [site.socials.facebook, site.socials.instagram],
+  // The Google Business Profile is the important one — it ties this site to the
+  // map listing. Empty entries are filtered so we never emit a dead URL.
+  sameAs: [site.socials.google, site.socials.facebook, site.socials.instagram].filter(Boolean),
+  hasMap: site.socials.google,
+  // NOTE: deliberately no `aggregateRating` / `review`. The profile is a genuine
+  // 5.0, but reviews a business collects about itself are "self-serving" and are
+  // ineligible for star rich results on LocalBusiness/Organization types:
+  // https://developers.google.com/search/docs/appearance/structured-data/review-snippet
   slogan: site.tagline,
   makesOffer: [
     "Island-wide Taxi Service",

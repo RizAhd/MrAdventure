@@ -6,10 +6,20 @@ export const site = {
   serviceArea: "Island-wide, Sri Lanka",
   blurb:
     "Reliable island-wide taxi & airport transfers across Sri Lanka — plus wildlife safaris and scooter & tuk-tuk rentals. Run by local experts you can trust.",
+  /**
+   * Public profiles. Anything left as "" is hidden everywhere rather than
+   * rendered as a dead `href="#"` link.
+   */
   socials: {
+    // TODO: this is a share link to a single *post*, not the page itself.
+    // Replace with the Facebook Page URL — `sameAs` needs a profile Google can
+    // match to the business entity.
     facebook: "https://www.facebook.com/share/p/185CRRJ4FF/",
     instagram: "https://www.instagram.com/mradventure40",
-    tiktok: "#", // TODO: add real TikTok link when available
+    tiktok: "", // no TikTok account yet — icon is hidden while this is empty
+    // TODO: swap for the canonical Maps URL (…/maps/place/… with the CID).
+    // share.google links are rotating shortlinks, so they're weak in `sameAs`.
+    google: "https://share.google/0ndq5IgOysnODwG9W",
   },
   nav: [
     { label: "Taxi", href: "#taxi" },
