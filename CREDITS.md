@@ -24,6 +24,12 @@ ideally, **replace them with Mr Adventure's own photos** over time.
 | `public/destinations/matara.jpg` | Matara coast · Weranga Rajapaksha · CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Blue_beach_island_land_area.jpg |
 | `public/fleet/tuktuk.jpg` | Sri Lankan tuk-tuk | https://commons.wikimedia.org/wiki/File:Bajaj_auto-rickshaw_in_Sri_Lanka.jpg |
 | `public/fleet/bicycle.jpg` | Bicycle | https://commons.wikimedia.org/wiki/File:Orbea_Occam_2020.jpg |
+| `public/destinations/negombo.webp` | Negombo lagoon · Steffen Schmitz · CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Negombo,_Lagoon,_2025-08_CN-07.jpg |
+| `public/destinations/mirissa.webp` | Mirissa · Jacek Lesniowski · CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Mirissa,_Sri_Lanka_-_panoramio_(2).jpg |
+| `public/destinations/bentota.webp` | Bentota Beach · Pavan Lulla · CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Bentota_Beach_-_panoramio.jpg |
+| `public/destinations/hikkaduwa.webp` | Hikkaduwa · Supunsamithajayalath · CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Hikkaduwa_I.jpg |
+| `public/destinations/nuwara-eliya.webp` | Nuwara Eliya tea country · Jacek Lesniowski · CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Nuwara_Eliya,_Sri_Lanka_-_panoramio_(2).jpg |
+| `public/destinations/yala.webp` | Sri Lankan leopard, Yala · Sachin Kaveesha Fernando · CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:A_watchful_leopard.jpg |
 
 ### Hero slideshow (premium high-res, Wikimedia Commons)
 | File | Subject | Author / Licence | Source |

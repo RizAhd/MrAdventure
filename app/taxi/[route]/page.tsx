@@ -92,8 +92,10 @@ export default async function RoutePage({ params }: { params: Promise<{ route: s
       a: `Yes, we operate 24/7 including late arrivals and pre-dawn departures. Share your flight number when you book and we track it, so a delayed landing costs you nothing.`,
     },
     {
+      // Shared runs are occasional and on request — worded so it never reads as
+      // a scheduled service we'd have to honour.
       q: `Is this a private cab or a shared taxi?`,
-      a: `Private by default — the vehicle is yours alone, door to door. We also run shared taxis on some popular routes, which works out cheaper if you're flexible on timing. Ask us and we'll tell you what's running.`,
+      a: `Private by default — the vehicle is yours alone, door to door, with no other passengers. We do sometimes arrange a shared taxi when two groups happen to be travelling the same way on the same day, which brings the cost down for both. There's no fixed shuttle timetable, so just ask when you enquire and we'll tell you whether anything is available for your date.`,
     },
   ];
 

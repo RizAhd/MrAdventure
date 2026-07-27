@@ -225,6 +225,66 @@ export const routes: Route[] = [
     stops: ["Ella Gap viewpoint", "Diyaluma Falls", "Matara", "Weligama"],
   },
   {
+    slug: "kandy-to-nuwara-eliya",
+    from: "Kandy",
+    to: "Nuwara Eliya",
+    fromShort: "Kandy",
+    toShort: "Nuwara Eliya",
+    intro:
+      "The heart of the hill-country drive. The road leaves Kandy and climbs continuously through tea estates, waterfalls and cloud, and the last section is as scenic as anything on the island. Most people take a full morning over it rather than treating it as a transfer.",
+    vehicleNote:
+      "Tight bends and steep gradients the whole way — a well-maintained car or the 7-seater van, and take it slowly. Anyone prone to travel sickness should sit in front.",
+    stops: ["Ramboda Falls", "Tea factory tours", "Labookellie tea centre", "Hindu temples on the estate road"],
+  },
+  {
+    slug: "nuwara-eliya-to-ella",
+    from: "Nuwara Eliya",
+    to: "Ella",
+    fromShort: "Nuwara Eliya",
+    toShort: "Ella",
+    intro:
+      "A short hop between the two hill-country bases, and the stretch the famous blue train also covers. If you'd rather take the train for the scenery, we'll drop you at the station, carry your bags on to Ella and meet you at the other end — a lot of guests do exactly that.",
+    vehicleNote:
+      "Short enough that any vehicle is comfortable. The luggage-transfer option is popular here, so ask if you want to ride the train unencumbered.",
+    stops: ["Nanu Oya station", "Devon Falls", "St Clair's Falls", "Ella Gap viewpoint"],
+  },
+  {
+    slug: "ella-to-yala",
+    from: "Ella",
+    to: "Yala National Park",
+    fromShort: "Ella",
+    toShort: "Yala",
+    intro:
+      "Down out of the hills into dry-zone safari country. The descent through Wellawaya is dramatic, and the landscape changes completely — tea and cloud give way to scrub, tanks and elephants within a couple of hours.",
+    vehicleNote:
+      "Steep descent then flat road. A car is fine; the van makes more sense if you're staying on for a safari and want your luggage secure while you're in the park jeep.",
+    stops: ["Rawana Falls", "Diyaluma Falls", "Buduruwagala rock carvings", "Kataragama"],
+  },
+  {
+    slug: "mattala-airport-to-yala",
+    from: "Mattala Airport (HRI)",
+    to: "Yala National Park",
+    fromShort: "Mattala Airport",
+    toShort: "Yala",
+    intro:
+      "The shortest way into Yala from any airport. Mattala sits in the deep south near Hambantota, close enough that a morning landing can put you on an afternoon game drive — which almost nothing else on the island allows.",
+    vehicleNote:
+      "Short, easy road. Take a car unless you're a group; we can hold your luggage while you're in the park and carry on afterwards.",
+    stops: ["Hambantota", "Bundala National Park", "Kataragama"],
+  },
+  {
+    slug: "galle-to-mirissa",
+    from: "Galle",
+    to: "Mirissa",
+    fromShort: "Galle",
+    toShort: "Mirissa",
+    intro:
+      "A short coastal run that most guests turn into a half-day. The road hugs the sea past Unawatuna, Midigama and Weligama, and every one of those is worth stopping at — stilt fishermen, beginner surf breaks and a string of bays.",
+    vehicleNote:
+      "Short distance, so pick whatever suits your group. Worth booking the driver for the day rather than the transfer, so you can stop wherever you like along the coast.",
+    stops: ["Unawatuna", "Stilt fishermen at Koggala", "Weligama surf", "Coconut Tree Hill"],
+  },
+  {
     slug: "kandy-to-sigiriya",
     from: "Kandy",
     to: "Sigiriya",
