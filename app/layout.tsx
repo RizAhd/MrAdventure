@@ -75,8 +75,9 @@ export const metadata: Metadata = {
     default: "Sri Lanka Taxi Service | Airport Pickup & Drop, Island-Wide Cabs",
     template: "%s | Mr Adventure Tours & Travels",
   },
+  // ~155 chars — past that Google truncates and the pitch is cut mid-sentence.
   description:
-    "Sri Lanka taxi & cab service, rated 5.0 on Google. 24/7 Colombo airport pickup and drop, island-wide transfers. Cars, vans & 27-seat coaches. Fixed prices, no booking fee — quote on WhatsApp in minutes.",
+    "Sri Lanka taxi & cab service rated 5.0 on Google. 24/7 Colombo airport pickup and drop, island-wide transfers. Fixed prices, no booking fee — quote on WhatsApp.",
   keywords: [
     "Sri Lanka taxi service",
     "Sri Lanka cab service",
