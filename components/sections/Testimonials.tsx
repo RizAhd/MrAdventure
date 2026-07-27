@@ -45,9 +45,10 @@ function Card({ r }: { r: Review }) {
       {/* Gold hairline that wipes in on hover */}
       <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-gold-400 to-gold-600 transition-transform duration-500 group-hover/card:scale-x-100" />
 
-      {/* Oversized watermark glyph — fills the whitespace on short reviews */}
+      {/* Oversized watermark glyph, low and right so it fills the dead space on
+          short reviews instead of crowding the Google mark up top. */}
       <Quote
-        className="pointer-events-none absolute -right-3 -top-2 h-24 w-24 rotate-180 text-brand-950/[0.04]"
+        className="pointer-events-none absolute -bottom-5 -right-4 h-28 w-28 rotate-180 text-brand-950/[0.04]"
         aria-hidden
       />
 
