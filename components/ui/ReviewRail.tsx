@@ -28,12 +28,20 @@ export function ReviewRail({ children, speed = 0.45 }: { children: ReactNode; sp
   });
   const [dragging, setDragging] = useState(false);
 
-  /** Keep scrollLeft inside the first copy so the loop never hits either end. */
-  const wrap = useCallback((el: HTMLDivElement) => {
+  /**
+   * Keep scrollLeft inside the first copy so the loop never hits either end.
+   *
+   * `allowBackward` matters: browsers clamp scrollLeft at 0, so a rail sitting
+   * at rest at the start is indistinguishable from one dragged past it. Wrapping
+   * unconditionally therefore fires on the very first frame and slams the rail
+   * to the halfway point before the user has touched anything. Auto-scroll only
+   * ever moves forward, so it passes false; a drag passes true.
+   */
+  const wrap = useCallback((el: HTMLDivElement, allowBackward = false) => {
     const half = el.scrollWidth / 2;
     if (half <= 0) return;
     if (el.scrollLeft >= half) el.scrollLeft -= half;
-    else if (el.scrollLeft <= 0) el.scrollLeft += half;
+    else if (allowBackward && el.scrollLeft <= 0) el.scrollLeft += half;
   }, []);
 
   useEffect(() => {
@@ -43,19 +51,33 @@ export function ReviewRail({ children, speed = 0.45 }: { children: ReactNode; sp
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
 
+    /**
+     * Sub-pixel position is tracked here rather than by doing
+     * `el.scrollLeft += speed`. Browsers round the scrollLeft they hand back,
+     * so incrementing the DOM property by less than 1px reads back as the
+     * original value every frame and the rail never moves at all. Accumulate in
+     * JS, assign the absolute value.
+     */
+    let pos = el.scrollLeft;
+
     const tick = () => {
       if (!paused.current && !drag.current.active && !reduced) {
-        el.scrollLeft += speed;
-        wrap(el);
+        const half = el.scrollWidth / 2;
+        if (half > 0) {
+          pos += speed;
+          if (pos >= half) pos -= half;
+          el.scrollLeft = pos;
+        }
       }
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
 
-    // Manual wheel / trackpad / touch scrolling still needs wrapping.
+    // Manual wheel / trackpad / touch / drag: wrap, then resync the accumulator
+    // so auto-scroll picks up from wherever the user left it instead of jumping.
     const onScroll = () => {
-      if (!drag.current.active) return;
-      wrap(el);
+      if (drag.current.active) wrap(el, true);
+      if (paused.current || drag.current.active) pos = el.scrollLeft;
     };
     el.addEventListener("scroll", onScroll, { passive: true });
 
@@ -79,7 +101,7 @@ export function ReviewRail({ children, speed = 0.45 }: { children: ReactNode; sp
     const el = ref.current;
     if (!el || !drag.current.active) return;
     el.scrollLeft = drag.current.startScroll - (e.clientX - drag.current.startX);
-    wrap(el);
+    wrap(el, true);
   };
 
   const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
