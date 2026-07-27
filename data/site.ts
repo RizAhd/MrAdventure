@@ -11,11 +11,13 @@ export const site = {
    * rendered as a dead `href="#"` link.
    */
   socials: {
-    // TODO: this is a share link to a single *post*, not the page itself.
-    // Replace with the Facebook Page URL — `sameAs` needs a profile Google can
-    // match to the business entity.
-    facebook: "https://www.facebook.com/share/p/185CRRJ4FF/",
-    instagram: "https://www.instagram.com/mradventure40",
+    // Facebook's own canonical path for the page (it declares this itself in
+    // rel=canonical). Preferred over profile.php?id= — a readable slug is a
+    // stronger `sameAs` signal and survives Facebook URL changes better.
+    facebook: "https://www.facebook.com/people/Mr-Adventure-Tours-Travels/61591846139360/",
+    // Was mradventure40, which now returns "Profile isn't available" — a dead
+    // link that was live on the site and in sameAs.
+    instagram: "https://www.instagram.com/mradventuretravels/",
     tiktok: "", // no TikTok account yet — icon is hidden while this is empty
     // TODO: swap for the canonical Maps URL (…/maps/place/… with the CID).
     // share.google links are rotating shortlinks, so they're weak in `sameAs`.
