@@ -27,8 +27,11 @@ export async function generateMetadata({ params }: { params: Promise<{ route: st
   if (!r) return {};
   // `absolute` bypasses the root "%s | Mr Adventure Tours & Travels" template,
   // which would push these past ~85 chars and get them truncated in results.
-  const title = `${r.from} to ${r.to} Taxi — Fixed Price | Mr Adventure`;
-  const description = `Private ${r.from} to ${r.to} taxi and transfer with Mr Adventure. Cars, vans and coaches, 24/7, fixed fair prices agreed up front. Get a quote on WhatsApp in minutes.`;
+  const title = `${r.from} to ${r.to} Taxi & Cab — Fixed Price`;
+  // Description is the SERP sales pitch, so it leads with what makes someone
+  // click: fixed price, no booking fee, 24/7, and the 5.0 rating. Kept near
+  // 155 chars — Google truncates past that and the pitch gets cut mid-sentence.
+  const description = `Private ${r.fromShort} to ${r.toShort} taxi & cab. Fixed price up front, no booking fee. Cars, vans & coaches, 24/7. Rated 5.0 on Google — quote on WhatsApp.`;
   return {
     title: { absolute: title },
     description,
@@ -56,6 +59,44 @@ export default async function RoutePage({ params }: { params: Promise<{ route: s
   const related = relatedRoutes(r.slug);
   const cta = waEnquiry(`a taxi from ${r.from} to ${r.to}`);
 
+  /**
+   * Route-specific FAQs. These exist to catch the question-shaped searches
+   * people actually type — "how much is a taxi from colombo airport to ella",
+   * "how long does it take", "is there a night cab" — which the marketing copy
+   * above doesn't match. Biggest single driver of impressions on these pages.
+   *
+   * Answers stay honest: no invented fares, and no duration claim unless the
+   * operator has filled `r.duration` in.
+   */
+  const faqs = [
+    {
+      q: `How much is a taxi from ${r.from} to ${r.to}?`,
+      a: `The fare depends on the vehicle you need and how many passengers and bags you're carrying, so we quote each trip individually rather than publishing one price. Message us on WhatsApp with your date and group size and you'll get a fixed, all-in price — usually within minutes. No booking fee and no deposit to hold a date.`,
+    },
+    ...(r.duration
+      ? [{
+          q: `How long does the ${r.fromShort} to ${r.toShort} drive take?`,
+          a: `Around ${r.duration} of driving, plus however long you spend on stops. Traffic and weather can shift it, so we build in a margin on airport runs.`,
+        }]
+      : []),
+    {
+      q: `Which vehicle should I book for ${r.fromShort} to ${r.toShort}?`,
+      a: r.vehicleNote,
+    },
+    {
+      q: `Can we stop along the way from ${r.fromShort} to ${r.toShort}?`,
+      a: `Yes — the vehicle and driver are yours for the whole journey, so stops cost nothing extra. On this route guests commonly break at ${r.stops.slice(0, 3).join(", ")}. Just tell your driver on the day.`,
+    },
+    {
+      q: `Do you run this transfer at night?`,
+      a: `Yes, we operate 24/7 including late arrivals and pre-dawn departures. Share your flight number when you book and we track it, so a delayed landing costs you nothing.`,
+    },
+    {
+      q: `Is this a private cab or a shared taxi?`,
+      a: `Private by default — the vehicle is yours alone, door to door. We also run shared taxis on some popular routes, which works out cheaper if you're flexible on timing. Ask us and we'll tell you what's running.`,
+    },
+  ];
+
   const ld = {
     "@context": "https://schema.org",
     "@type": "TaxiService",
@@ -73,9 +114,20 @@ availableLanguage: ["en"],
     },
   };
 
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-900 pb-16 pt-28 text-white sm:pt-32">
@@ -192,6 +244,30 @@ availableLanguage: ["en"],
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs. Rendered as open <details> so the answers are in the visible DOM
+          — FAQPage markup whose answers aren't on the page is a violation. */}
+      <section className="section bg-white">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">
+            {r.fromShort} to {r.toShort} — common questions
+          </h2>
+          <div className="mt-8 space-y-3">
+            {faqs.map((f, i) => (
+              <details
+                key={f.q}
+                open={i === 0}
+                className="group rounded-2xl border border-brand-100 bg-sand p-5 open:bg-white open:shadow-sm"
+              >
+                <summary className="cursor-pointer list-none font-display text-base font-semibold text-brand-900 marker:content-none sm:text-lg">
+                  {f.q}
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-ink/75">{f.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

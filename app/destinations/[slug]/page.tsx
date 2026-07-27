@@ -24,8 +24,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const d = destinationBySlug(slug);
   if (!d) return {};
   // `absolute` bypasses the root title template — see the route page.
-  const title = `${d.name} Taxi & Transfers | Mr Adventure Sri Lanka`;
-  const description = `${d.blurb} Private taxi and airport transfers to ${d.name} with Mr Adventure — cars, vans and coaches, fixed fair prices, 24/7.`;
+  const title = `${d.name} Taxi & Cab Service | Transfers to ${d.name}`;
+  // Kept near 155 chars so it isn't truncated mid-pitch in results.
+  const description = `Private taxi & cab transfers to ${d.name}, Sri Lanka. Fixed prices, no booking fee, 24/7 airport pickup. Rated 5.0 on Google — quote on WhatsApp in minutes.`;
   return {
     title: { absolute: title },
     description,

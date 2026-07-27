@@ -38,13 +38,10 @@
   --font-display: var(--font-space-grotesk), var(--font-manrope), ui-sans-serif, sans-serif;
 
   /* Motion */
-  --animate-marquee: marquee 38s linear infinite;
+  /* NOTE: the review rail used to be a CSS marquee here. It's now a real
+     scroll container driven from rAF (components/ui/ReviewRail.tsx) so it can
+     be swiped and dragged by hand, not just watched. */
   --animate-float-up: float-up 6s ease-in-out infinite;
-
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
 
   @keyframes float-up {
     0%, 100% { transform: translateY(0); }
@@ -100,8 +97,6 @@
   /* Subtle hide-scrollbar for horizontal carousels */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-  .pause-on-hover:hover { animation-play-state: paused; }
 }
 
 /* Respect reduced motion */
@@ -113,16 +108,4 @@
     scroll-behavior: auto !important;
   }
 
-  /* The blanket rule above is wrong for the review marquee: collapsing its
-     duration to 0.001ms doesn't stop it, it fast-forwards it to the end
-     (translateX(-50%)), leaving the rail visibly offset with a blank half.
-     Cancel the animation outright and hand the visitor a swipeable strip. */
-  .animate-marquee {
-    animation: none !important;
-    transform: none !important;
-  }
-  .marquee-rail {
-    overflow-x: auto !important;
-    mask-image: none !important;
-  }
 }

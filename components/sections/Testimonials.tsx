@@ -1,6 +1,7 @@
 import { Star, Quote, BadgeCheck } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GoogleIcon } from "@/components/ui/icons";
+import { ReviewRail } from "@/components/ui/ReviewRail";
 import { reviews, googleRating, type Review } from "@/data/reviews";
 import { site } from "@/data/site";
 
@@ -134,14 +135,15 @@ export function Testimonials() {
         </div>
       </div>
 
-      {/* Auto-rolling rail. Pauses on hover; falls back to a manual swipe strip
-          for visitors who've asked for reduced motion. */}
-      <div className="marquee-rail relative mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
-        <div className="flex w-max items-stretch gap-5 px-5 animate-marquee pause-on-hover">
+      {/* Auto-rolls, and can also be swiped, dragged or stepped through by hand.
+          Cards are passed as children so they stay server-rendered — the review
+          text needs to be in the HTML, not injected by the client. */}
+      <div className="mt-12">
+        <ReviewRail>
           {loop.map((r, i) => (
             <Card key={`${r.name}-${i}`} r={r} />
           ))}
-        </div>
+        </ReviewRail>
       </div>
 
       <div className="relative mt-12 text-center">
