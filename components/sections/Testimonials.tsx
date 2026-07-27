@@ -19,7 +19,9 @@ function Stars({ rating }: { rating: number }) {
 
 function Card({ r }: { r: Review }) {
   return (
-    <figure className="flex h-full w-[19rem] shrink-0 flex-col rounded-3xl bg-white p-6 shadow-sm ring-1 ring-brand-950/5">
+    // No `h-full` here: on a flex item whose parent has auto height, height:100%
+    // is indefinite and collapses back to auto, which defeats `items-stretch`.
+    <figure className="flex w-[19rem] shrink-0 flex-col rounded-3xl bg-white p-6 shadow-sm ring-1 ring-brand-950/5">
       <div className="flex items-center justify-between">
         <Stars rating={r.rating} />
         <GoogleIcon className="h-4 w-4" />
