@@ -21,14 +21,16 @@ export const site = {
     // share.google links are rotating shortlinks, so they're weak in `sameAs`.
     google: "https://share.google/0ndq5IgOysnODwG9W",
   },
+  // Root-relative so they still resolve from /taxi/... and /destinations/...
+  // pages, not just the home page.
   nav: [
-    { label: "Taxi", href: "#taxi" },
-    { label: "Fleet", href: "#fleet" },
-    { label: "Destinations", href: "#destinations" },
-    { label: "Safaris", href: "#safaris" },
-    { label: "Rentals", href: "#rentals" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Contact", href: "#contact" },
+    { label: "Taxi", href: "/#taxi" },
+    { label: "Fleet", href: "/#fleet" },
+    { label: "Destinations", href: "/#destinations" },
+    { label: "Safaris", href: "/#safaris" },
+    { label: "Rentals", href: "/#rentals" },
+    { label: "Gallery", href: "/#gallery" },
+    { label: "Contact", href: "/#contact" },
   ],
 } as const;
 

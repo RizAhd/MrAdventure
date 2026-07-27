@@ -1,9 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { destinations } from "@/data/destinations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { waEnquiry } from "@/lib/whatsapp";
 import { blurProps } from "@/lib/utils";
 
 export function Destinations() {
@@ -18,10 +18,11 @@ export function Destinations() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {destinations.map((d, i) => (
             <Reveal key={d.name} delay={(i % 3) * 0.1}>
-              <a
-                href={waEnquiry(`a trip to ${d.name}`)}
-                target="_blank"
-                rel="noopener noreferrer"
+              {/* Links to the destination page rather than straight to WhatsApp:
+                  gives crawlers an internal link and gives visitors the detail
+                  before they commit to a message. The CTA lives on that page. */}
+              <Link
+                href={`/destinations/${d.slug}/`}
                 className="group relative block h-80 overflow-hidden rounded-3xl shadow-sm ring-1 ring-brand-950/5 transition-transform duration-200 active:scale-[0.98]"
               >
                 <Image
@@ -40,10 +41,10 @@ export function Destinations() {
                   <h3 className="font-display text-2xl font-bold text-white drop-shadow">{d.name}</h3>
                   <p className="mt-1 text-sm leading-relaxed text-white/85">{d.blurb}</p>
                   <span className="mt-3 inline-block text-xs font-semibold uppercase tracking-widest text-gold-300">
-                    Plan this trip →
+                    Explore {d.name} →
                   </span>
                 </div>
-              </a>
+              </Link>
             </Reveal>
           ))}
         </div>

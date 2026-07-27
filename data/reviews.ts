@@ -95,6 +95,8 @@ export const reviews: Review[] = [
     service: "Shared taxi",
   },
   {
+    // Placed last: genuine, but the least specific of the eight and from a
+    // single-review account, so it carries the least weight with readers.
     name: "Rizlan Ahmed",
     rating: 5,
     text: "Great Service & Highly Recommended",

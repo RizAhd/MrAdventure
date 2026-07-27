@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Plane, ShieldCheck, Users, MapPin, ArrowRight } from "lucide-react";
 import { routes } from "@/data/routes";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -115,18 +116,16 @@ export function Taxi() {
           </p>
           <ul className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
             {routes.map((r) => (
-              <li key={`${r.from}-${r.to}`}>
-                <a
-                  href={waEnquiry(`a taxi from ${r.from} to ${r.to}`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <li key={r.slug}>
+                <Link
+                  href={`/taxi/${r.slug}/`}
                   className="group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:border-gold-500/50 hover:bg-white/10"
                 >
                   <span className="min-w-0 text-sm font-medium text-white/90">
                     {r.from} <span className="text-gold-400">→</span> {r.to}
                   </span>
                   <ArrowRight className="h-4 w-4 shrink-0 text-gold-400 transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

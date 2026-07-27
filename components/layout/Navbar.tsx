@@ -23,8 +23,10 @@ export function Navbar() {
   }, []);
 
   // Scroll-spy: highlight the nav link for the section currently in view.
+  // Nav hrefs are root-relative ("/#taxi") so they work from sub-pages, so take
+  // the fragment rather than stripping the "#".
   useEffect(() => {
-    const ids = site.nav.map((n) => n.href.replace("#", ""));
+    const ids = site.nav.map((n) => n.href.split("#")[1]).filter(Boolean);
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
@@ -35,7 +37,7 @@ export function Navbar() {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) setActive(`#${visible[0].target.id}`);
+        if (visible[0]) setActive(`/#${visible[0].target.id}`);
       },
       { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
     );
