@@ -117,8 +117,10 @@ export function Taxi() {
           <ul className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
             {routes.map((r) => (
               <li key={r.slug}>
+                {/* prefetch off — see the note in Destinations.tsx */}
                 <Link
                   href={`/taxi/${r.slug}/`}
+                  prefetch={false}
                   className="group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:border-gold-500/50 hover:bg-white/10"
                 >
                   <span className="min-w-0 text-sm font-medium text-white/90">

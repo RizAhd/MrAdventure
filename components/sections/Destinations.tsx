@@ -21,8 +21,13 @@ export function Destinations() {
               {/* Links to the destination page rather than straight to WhatsApp:
                   gives crawlers an internal link and gives visitors the detail
                   before they commit to a message. The CTA lives on that page. */}
+              {/* prefetch disabled: under `output: "export"` Next writes the RSC
+                  payload to __next.destinations/$d$slug/__PAGE__.txt but the
+                  client prefetch asks for the dot-joined path, so every one
+                  404s. Pages are static HTML anyway, so navigation stays fast. */}
               <Link
                 href={`/destinations/${d.slug}/`}
+                prefetch={false}
                 className="group relative block h-80 overflow-hidden rounded-3xl shadow-sm ring-1 ring-brand-950/5 transition-transform duration-200 active:scale-[0.98]"
               >
                 <Image

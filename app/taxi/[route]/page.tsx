@@ -206,6 +206,7 @@ availableLanguage: ["en"],
                 <li key={o.slug}>
                   <Link
                     href={`/taxi/${o.slug}/`}
+                    prefetch={false}
                     className="group flex items-center justify-between gap-3 rounded-2xl border border-brand-100 bg-sand px-4 py-3.5 transition-colors hover:border-brand-300 hover:bg-brand-50"
                   >
                     <span className="text-sm font-medium text-brand-900">
