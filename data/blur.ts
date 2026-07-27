@@ -48,5 +48,11 @@ export const blur: Record<string, string> = {
   "/hero/leopard.webp": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAsAA4BaJbACdAEOfyt4hAegAP7xhOdRfhtTUeYbFtrsbQ66uyFNjXNNOF3ia/6dn4YMLqvtw4TTr9/Bskdf78BSURgIeAAAAA==",
   "/hero/sigiriya.webp": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAQCdASoQAAwAA4BaJbACsAD2IGRtssAA/sqVkiyc8/mSMljFDuKQd3+c0lRoLkXh73scQBn3TQbadFzNowErJlERDnEuqsCW0jXwepS2n/Dnk70C/zapGFvAAA==",
   "/logos/logo-badge.webp": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAwAgCdASoQABAAA4BaJbACdLoAAxoZsbQ9YAD+5yccitXiOE6KlAz//PzP92zP+lbN57Wl4tikPAAA",
-  "/logos/logo-mark.webp": "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACQAQCdASoQABAAA4BaJaQAAudU2rAA/viuK/R+rWnIUY3U1doAAA=="
+  "/logos/logo-mark.webp": "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACQAQCdASoQABAAA4BaJaQAAudU2rAA/viuK/R+rWnIUY3U1doAAA==",
+  "/destinations/negombo.webp": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoQAAsAA4BaJZQAAudDvM2DAAD+8BZqnX0JG8kp1kGtJq7/1srBopj7l1aVO9b4NdjWyMDRNNGh5BvI2TepTKAA",
+  "/destinations/mirissa.webp": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAQCdASoQAAsAA4BaJbACdADuvV7xwAD7+0VyzdzBBRDcTV3hmGuLzyOluZR4YqTicfy8TWHknCnlQ8oNQz1tAb2CBwfbmOWtEKy4huvQ3oZ8PztLDZzV8qAAAA==",
+  "/destinations/bentota.webp": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoQAAsAA4BaJZACdH8AF8XCoAD+lQjIbLpN3L1vIJgPgKYwZJrZJUhjoSPcQjhIZxoEOmu7aM88AAAA",
+  "/destinations/hikkaduwa.webp": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoQAAsAA4BaJZACdACzIK60AAD+7+W+ROd+gqPAgJQj/4SR8iIKrPRMvKe5+Ev3zAYAAA==",
+  "/destinations/nuwara-eliya.webp": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAwAgCdASoQAAsAA4BaJaACdADwKBjC9yRhAADOPXTTnS9kjLkLGIpBTVsBVuo7ey5f9w37HIHib1A+JvUsoHB8kkwLlEw2iIIyB/GU/ye9MOgA",
+  "/destinations/yala.webp": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAsAA4BaJbACdACqQHW+PgAA/fzE4OFJw7SZA7uu1Gaq9oQR5DBgLdUEivG6UOVdQ95qaZwrX8vUQMa2yQrqrS2bLuqqVRMoAA=="
 };

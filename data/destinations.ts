@@ -32,6 +32,20 @@ export const destinations: Destination[] = [
       "Transfers run around the clock. Most guests head straight for Negombo, Colombo, Kandy or the south coast — tell us your onward destination and we'll send the right vehicle for your group and luggage.",
   },
   {
+    slug: "negombo",
+    name: "Negombo",
+    image: "/destinations/negombo.webp",
+    blurb: "The closest beach town to the airport — fishing boats, Dutch canals and a long sandy strip.",
+    region: "Western Province",
+    body: [
+      "Negombo is the practical answer to a late landing or an early flight: it sits just north of the airport, so you're at your hotel in minutes rather than fighting into Colombo. That convenience has made it the standard first and last night for a lot of Sri Lanka trips.",
+      "It's a working fishing town underneath the hotels. The morning fish market on the beach is genuinely worth setting an alarm for, and the old Dutch canal still runs through the middle of town.",
+    ],
+    highlights: ["Negombo fish market at dawn", "Dutch canal boat trips", "Negombo lagoon", "St Mary's Church", "Long sandy beach strip"],
+    gettingThere:
+      "The shortest transfer we run — a few minutes from arrivals. Worth booking ahead anyway if you land late, so someone is waiting rather than you negotiating at the rank at 2am.",
+  },
+  {
     slug: "colombo",
     name: "Colombo",
     image: "/destinations/colombo.webp",
@@ -88,6 +102,20 @@ export const destinations: Destination[] = [
       "Directly on the Kandy–Sigiriya road. Ask us to build in an hour here on any Cultural Triangle transfer — it costs almost no extra driving time.",
   },
   {
+    slug: "nuwara-eliya",
+    name: "Nuwara Eliya",
+    image: "/destinations/nuwara-eliya.webp",
+    blurb: "Tea country at altitude — cool air, colonial bungalows and endless green terraces.",
+    region: "Central Province",
+    body: [
+      "The highest town in Sri Lanka, and the coolest — genuinely cold at night, which catches people out. The British built it as a hill retreat and it still looks the part: mock-Tudor hotels, a racecourse, a golf course and a boating lake, all sat in the middle of tea estates.",
+      "It's the centre of Ceylon tea country, and a factory tour here is the real thing rather than a tourist set-piece. Horton Plains and World's End are a short drive on, best done at first light before the cloud closes in.",
+    ],
+    highlights: ["Tea factory and estate tours", "Gregory Lake", "Horton Plains and World's End", "Hakgala Botanical Gardens", "Victoria Park"],
+    gettingThere:
+      "A long climb whichever direction you come from — the last stretch is steep and winding. Bring a warm layer; it's often fifteen degrees cooler than the coast you left that morning.",
+  },
+  {
     slug: "ella",
     name: "Ella",
     image: "/destinations/ella-nine-arch.webp",
@@ -100,6 +128,34 @@ export const destinations: Destination[] = [
     highlights: ["Nine Arch Bridge", "Little Adam's Peak", "Ella Rock", "Rawana Falls", "Tea factory tours"],
     gettingThere:
       "A long, steep climb whichever way you come. From Arugam Bay it's our most-requested run; from the airport it's a big day and many guests break it overnight in Kandy or Nuwara Eliya.",
+  },
+  {
+    slug: "bentota",
+    name: "Bentota",
+    image: "/destinations/bentota.webp",
+    blurb: "Wide resort beach where the river meets the sea — watersports, spas and turtle hatcheries.",
+    region: "Southern Province",
+    body: [
+      "Bentota is the closest proper resort beach to Colombo, which is why it fills with families and couples who want sand without a long drive. The Bentota river runs into the sea here, so you get both a calm lagoon and an open beach in the same place.",
+      "The river side is where the activity is — jet skis, banana boats and mangrove trips. Several turtle hatcheries sit along this stretch of coast, and a few are genuine conservation projects rather than photo opportunities. Ask us which.",
+    ],
+    highlights: ["Bentota river watersports", "Mangrove boat trips", "Turtle hatcheries", "Brief Garden", "Ayurvedic spas"],
+    gettingThere:
+      "Straight down the Southern Expressway from the airport — one of the fastest long transfers on the island and an easy first stop after a night flight.",
+  },
+  {
+    slug: "hikkaduwa",
+    name: "Hikkaduwa",
+    image: "/destinations/hikkaduwa.webp",
+    blurb: "Surf breaks, a coral sanctuary and the liveliest nightlife on the south-west coast.",
+    region: "Southern Province",
+    body: [
+      "Hikkaduwa built its reputation on two things: a reef you can snorkel straight off the beach, and a beach-bar scene that runs later than anywhere else on this coast. The coral sanctuary is shallow enough that you don't need to be a diver, and green turtles feed close in.",
+      "The surf suits improvers more than complete beginners — the breaks are reefy. Beginners are better off a little further south at Weligama.",
+    ],
+    highlights: ["Coral sanctuary snorkelling", "Sea turtles off the beach", "Hikkaduwa surf breaks", "Tsunami Museum", "Beachfront nightlife"],
+    gettingThere:
+      "Expressway most of the way from the airport, then a short run down the coast road. Easy to combine with Galle in the same trip.",
   },
   {
     slug: "galle",
@@ -116,6 +172,20 @@ export const destinations: Destination[] = [
       "The easiest long transfer on the island — the Southern Expressway runs nearly the whole way from the airport, so it's fast, flat driving on good tarmac.",
   },
   {
+    slug: "mirissa",
+    name: "Mirissa",
+    image: "/destinations/mirissa.webp",
+    blurb: "Crescent bay, palm-topped headland and Sri Lanka's main whale-watching harbour.",
+    region: "Southern Province",
+    body: [
+      "A small crescent of sand between two headlands, with Coconut Tree Hill on the eastern point — the most photographed spot on the south coast, and busy at sunset because of it.",
+      "Mirissa is the departure point for blue whale watching. Boats leave before dawn between roughly November and April; outside that window the sea is too rough and anyone selling you a trip is selling you a rough morning. Book a smaller boat with a licensed operator.",
+    ],
+    highlights: ["Blue whale watching (Nov–Apr)", "Coconut Tree Hill", "Secret Beach", "Parrot Rock", "Beginner surf at Weligama nearby"],
+    gettingThere:
+      "Expressway to Galle then along the coast. An early whale-watching start usually means a pre-dawn pickup — we do these regularly, just tell us the boat time.",
+  },
+  {
     slug: "matara",
     name: "Matara",
     image: "/destinations/matara.webp",
@@ -128,6 +198,20 @@ export const destinations: Destination[] = [
     highlights: ["Polhena reef snorkelling", "Parey Dewa island temple", "Weligama and Midigama surf", "Dondra Head lighthouse"],
     gettingThere:
       "Continue along the coast past Galle, or come down from the hills via Ella. We run this as a coastal day trip with as many beach stops as you want.",
+  },
+  {
+    slug: "yala",
+    name: "Yala",
+    image: "/destinations/yala.webp",
+    blurb: "Sri Lanka's most famous national park, and one of the best places on earth to see a wild leopard.",
+    region: "Southern Province",
+    body: [
+      "Yala has the highest density of leopards of any park in the world, which is why it's the busiest. Block 1 gets the most sightings and the most jeeps — mornings are better than afternoons, and the first vehicles through the gate do best.",
+      "It's also elephants, sloth bears, crocodiles and a huge amount of birdlife. The park usually closes for several weeks around September for the dry season; we'll tell you if your dates fall in it rather than let you turn up to a locked gate.",
+    ],
+    highlights: ["Sri Lankan leopard", "Elephants and sloth bears", "Early-morning game drives", "Kataragama temple town nearby", "Birdlife on the park lagoons"],
+    gettingThere:
+      "Closest to Mattala (HRI) airport in the south. We run Yala trips as full-day drives or as a stop on the way between the south coast and the east — and we run our own safaris at Kumana, the quieter park next door, if you'd rather avoid the jeep queues.",
   },
   {
     slug: "arugam-bay",
