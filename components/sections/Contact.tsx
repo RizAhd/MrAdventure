@@ -16,11 +16,13 @@ const serviceOptions = [
   "Other / not sure yet",
 ];
 
+// Profiles with no URL yet are dropped rather than rendered as dead `href="#"`.
 const socialLinks = [
+  { href: site.socials.google, label: "Google Business Profile", Icon: GoogleMonoIcon },
   { href: site.socials.facebook, label: "Facebook", Icon: FacebookIcon },
   { href: site.socials.instagram, label: "Instagram", Icon: InstagramIcon },
   { href: site.socials.tiktok, label: "TikTok", Icon: TikTokIcon },
-];
+].filter((s) => s.href);
 
 export function Contact() {
   const [form, setForm] = useState({
