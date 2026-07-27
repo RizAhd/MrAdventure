@@ -45,6 +45,18 @@ export const routes: Route[] = [
     stops: ["Negombo beach", "Colombo Fort", "Galle Face Green"],
   },
   {
+    slug: "colombo-airport-to-negombo",
+    from: "Colombo Airport (CMB)",
+    to: "Negombo",
+    fromShort: "Colombo Airport",
+    toShort: "Negombo",
+    intro:
+      "The shortest transfer on our list — Negombo sits just north of the airport, so you're at your hotel in minutes rather than an hour. It's the reason so many trips start and end here: land late, sleep by the sea, and begin properly in the morning.",
+    vehicleNote:
+      "Any vehicle is fine over this distance. Pick by luggage rather than comfort — a car for two, the 7-seater if you're a family arriving with a season's worth of bags.",
+    stops: ["Negombo fish market", "Dutch canal", "Negombo lagoon"],
+  },
+  {
     slug: "colombo-airport-to-kandy",
     from: "Colombo Airport (CMB)",
     to: "Kandy",
