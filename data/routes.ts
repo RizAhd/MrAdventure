@@ -105,6 +105,54 @@ export const routes: Route[] = [
     stops: ["Bentota", "Hikkaduwa", "Galle Fort ramparts"],
   },
   {
+    slug: "colombo-airport-to-nuwara-eliya",
+    from: "Colombo Airport (CMB)",
+    to: "Nuwara Eliya",
+    fromShort: "Colombo Airport",
+    toShort: "Nuwara Eliya",
+    intro:
+      "Sea level to the highest town in the country in a single drive. The road climbs steadily through Kegalle and Kandy before the final ascent into tea country, and the temperature falls the whole way — it's often fifteen degrees cooler at the top than at the airport.",
+    vehicleNote:
+      "Constant bends on the upper section, so comfort matters more than size. A car or the 7-seater van; dig out a jumper before the last hour rather than after.",
+    stops: ["Pinnawala Elephant Orphanage", "Kandy", "Ramboda Falls", "Tea factory tours"],
+  },
+  {
+    slug: "colombo-airport-to-bentota",
+    from: "Colombo Airport (CMB)",
+    to: "Bentota",
+    fromShort: "Colombo Airport",
+    toShort: "Bentota",
+    intro:
+      "One of the easiest beach transfers on the island. The Southern Expressway runs almost the whole way, so it's flat, fast tarmac rather than three hours of coast road — which makes Bentota the quickest proper beach you can reach from arrivals.",
+    vehicleNote:
+      "Expressway the whole way, so any vehicle is comfortable. Families usually take the 7-seater for the luggage rather than the seats.",
+    stops: ["Kalutara Bodhiya", "Turtle hatcheries", "Bentota river mouth"],
+  },
+  {
+    slug: "colombo-airport-to-hikkaduwa",
+    from: "Colombo Airport (CMB)",
+    to: "Hikkaduwa",
+    fromShort: "Colombo Airport",
+    toShort: "Hikkaduwa",
+    intro:
+      "Straight down the expressway to the surf coast. Hikkaduwa is far enough south to have real waves and a proper reef, but close enough to the expressway exit that you're not spending the afternoon on the old coast road.",
+    vehicleNote:
+      "Take the van if you're bringing boards — roof racks and straps are included, just tell us how many. Otherwise a car is plenty.",
+    stops: ["Kalutara", "Bentota", "Hikkaduwa coral sanctuary"],
+  },
+  {
+    slug: "colombo-airport-to-mirissa",
+    from: "Colombo Airport (CMB)",
+    to: "Mirissa",
+    fromShort: "Colombo Airport",
+    toShort: "Mirissa",
+    intro:
+      "The full run down the south-west coast, expressway most of the way and then the coast road past Galle. Worth timing around your whale-watching booking — the boats leave before dawn, so arriving the previous afternoon beats a pre-dawn dash.",
+    vehicleNote:
+      "Long but easy driving. A car suits couples; the 7-seater van is the better call for families or anyone carrying dive and surf gear.",
+    stops: ["Bentota", "Galle Fort", "Weligama", "Coconut Tree Hill"],
+  },
+  {
     slug: "colombo-airport-to-arugam-bay",
     from: "Colombo Airport (CMB)",
     to: "Arugam Bay",
