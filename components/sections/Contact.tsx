@@ -6,7 +6,7 @@ import { site } from "@/data/site";
 import { allServices } from "@/data/services";
 import { waBooking, waEnquiry, PHONE_TEL, PHONE_DISPLAY } from "@/lib/whatsapp";
 import { buttonClasses } from "@/components/ui/Button";
-import { WhatsAppIcon, FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/ui/icons";
+import { WhatsAppIcon, FacebookIcon, InstagramIcon, TikTokIcon, GoogleMonoIcon } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const serviceOptions = [
