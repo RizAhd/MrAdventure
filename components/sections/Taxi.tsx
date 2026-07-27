@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Plane, ShieldCheck, Users, MapPin } from "lucide-react";
+import { Plane, ShieldCheck, Users, MapPin, ArrowRight } from "lucide-react";
+import { routes } from "@/data/routes";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { buttonClasses } from "@/components/ui/Button";
@@ -51,7 +52,7 @@ export function Taxi() {
             </div>
 
             <Reveal delay={0.1} className="mt-8">
-              <p className="text-xs font-semibold uppercase tracking-widest text-gold-300">Popular destinations</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-gold-300">We cover</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {route.map((r) => (
                   <span
@@ -100,6 +101,36 @@ export function Taxi() {
             </div>
           </Reveal>
         </div>
+
+        {/* Popular routes — the search phrases customers actually type, each one
+            a one-tap WhatsApp fare request. */}
+        <Reveal delay={0.1} className="mt-14">
+          <h3 className="font-display text-xl font-bold text-white sm:text-2xl">
+            Popular taxi &amp; airport transfer routes
+          </h3>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/70">
+            Fares depend on the vehicle and your group size, so we quote each trip individually — tap any
+            route for a fixed price on WhatsApp, usually within minutes. Don&apos;t see your journey? We
+            drive anywhere on the island.
+          </p>
+          <ul className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+            {routes.map((r) => (
+              <li key={`${r.from}-${r.to}`}>
+                <a
+                  href={waEnquiry(`a taxi from ${r.from} to ${r.to}`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:border-gold-500/50 hover:bg-white/10"
+                >
+                  <span className="min-w-0 text-sm font-medium text-white/90">
+                    {r.from} <span className="text-gold-400">→</span> {r.to}
+                  </span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-gold-400 transition-transform group-hover:translate-x-1" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

@@ -32,38 +32,51 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mradventure.lk/"),
+  // Taxi / cab / airport transfer is the main revenue line, so the primary
+  // keywords lead the title rather than the brand name.
   title: {
-    default: "Mr Adventure Tours & Travels | Sri Lanka Taxi, Airport Transfers & Tours",
+    default: "Sri Lanka Taxi Service | Airport Pickup & Drop, Island-Wide Cabs",
     template: "%s | Mr Adventure Tours & Travels",
   },
   description:
-    "Reliable island-wide taxi & airport transfers across Sri Lanka — cars, vans and mini-buses. Plus wildlife safaris and scooter/tuk-tuk rentals. Fixed fair prices. Book instantly on WhatsApp.",
+    "Sri Lanka taxi & cab service — 24/7 Colombo airport pickup and drop, island-wide transfers. Cars, vans and 27-seat coaches. Fixed fair prices. Instant WhatsApp quote.",
   keywords: [
-    "Sri Lanka taxi",
-    "airport transfer Sri Lanka",
-    "Colombo airport taxi",
+    "Sri Lanka taxi service",
+    "Sri Lanka cab service",
+    "airport taxi Sri Lanka",
+    "Colombo airport pickup and drop",
+    "Colombo airport transfer",
     "island-wide taxi Sri Lanka",
+    "all island cab service",
+    "Mattala airport taxi",
     "van hire Sri Lanka",
     "Arugam Bay taxi",
-    "Sri Lanka safari",
+    "long distance taxi Sri Lanka",
   ],
+  // Canonical + og:url were missing entirely; without them /index.html is an
+  // unclaimed duplicate of / and shares aren't attributed to the domain.
+  alternates: { canonical: "/" },
   appleWebApp: {
     capable: true,
     title: "Mr Adventure",
     statusBarStyle: "black-translucent",
   },
   openGraph: {
-    title: "Mr Adventure Tours & Travels",
+    title: "Sri Lanka Taxi & Cab Service | Airport Pickup & Drop",
     description:
-      "Island-wide taxi & airport transfers across Sri Lanka, plus safaris & rentals. Safe travel, best prices, reliable service.",
+      "Island-wide taxi and airport transfers across Sri Lanka — cars, vans and coaches, 24/7. Fixed fair prices, no meters. Rated 5.0 on Google.",
+    url: "/",
+    siteName: "Mr Adventure Tours & Travels",
     type: "website",
     locale: "en_US",
-    images: [{ url: "og.jpg", width: 1200, height: 630, alt: "Mr Adventure Tours & Travels" }],
+    images: [
+      { url: "og.jpg", width: 1200, height: 630, alt: "Mr Adventure — Sri Lanka island-wide taxi and airport transfers" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mr Adventure Tours & Travels",
-    description: "Sri Lanka island-wide taxi, airport transfers, safaris & rentals. Book on WhatsApp.",
+    title: "Sri Lanka Taxi & Cab Service | Airport Pickup & Drop",
+    description: "Island-wide taxi & airport transfers across Sri Lanka, 24/7. Fixed prices. Book on WhatsApp.",
     images: ["og.jpg"],
   },
 };

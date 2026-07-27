@@ -112,4 +112,17 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+
+  /* The blanket rule above is wrong for the review marquee: collapsing its
+     duration to 0.001ms doesn't stop it, it fast-forwards it to the end
+     (translateX(-50%)), leaving the rail visibly offset with a blank half.
+     Cancel the animation outright and hand the visitor a swipeable strip. */
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
+  }
+  .marquee-rail {
+    overflow-x: auto !important;
+    mask-image: none !important;
+  }
 }

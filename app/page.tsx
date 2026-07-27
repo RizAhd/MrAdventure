@@ -57,17 +57,35 @@ const jsonLd = {
   // ineligible for star rich results on LocalBusiness/Organization types:
   // https://developers.google.com/search/docs/appearance/structured-data/review-snippet
   slogan: site.tagline,
-  makesOffer: [
-    "Island-wide Taxi Service",
-    "Airport Transfer",
-    "Van & Mini-bus Hire",
-    "Kumana Safari",
-    "Lagoon Safari",
-    "Boat Safari",
-    "Scooter Rent",
-    "Tuk Tuk Rent",
-    "Bicycle Rent",
-  ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
+  // Taxi / cab / airport transfer is the primary service, so it leads the
+  // catalog and is typed as schema.org TaxiService rather than generic Service.
+  // (TaxiService lives under Service, not LocalBusiness, so it belongs here in
+  // hasOfferCatalog rather than as the top-level @type.)
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Taxi, cab & airport transfer services in Sri Lanka",
+    itemListElement: [
+      ...[
+        "Island-wide Taxi Service",
+        "Airport Pickup & Drop — Colombo (CMB)",
+        "Airport Pickup & Drop — Mattala (HRI)",
+        "Long-distance Cab Service",
+        "Van & Mini-bus Hire",
+        "27-seat Coach Hire",
+      ].map((name) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "TaxiService",
+          name,
+          provider: { "@id": `${SITE_URL}/#business` },
+          areaServed: { "@type": "Country", name: "Sri Lanka" },
+        },
+      })),
+      ...["Kumana Safari", "Lagoon Safari", "Boat Safari", "Scooter Rent", "Tuk Tuk Rent", "Bicycle Rent"].map(
+        (name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } }),
+      ),
+    ],
+  },
 };
 
 const faqLd = {

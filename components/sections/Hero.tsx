@@ -82,8 +82,10 @@ export function Hero() {
           className="mx-auto mt-6 max-w-3xl font-display text-[2.6rem] font-bold leading-[1.03] tracking-tight text-white text-balance sm:text-6xl lg:text-[4.25rem]"
         >
           Island-Wide{" "}
-          <span className="bg-gradient-to-r from-gold-300 to-gold-500 bg-clip-text text-transparent">Taxi Service</span>{" "}
-          &amp; Travels
+          <span className="bg-gradient-to-r from-gold-300 to-gold-500 bg-clip-text text-transparent">
+            Taxi &amp; Cab Service
+          </span>{" "}
+          Across Sri Lanka
         </motion.h1>
 
         <motion.p variants={item} className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
