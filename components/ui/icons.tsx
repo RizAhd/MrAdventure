@@ -1,9 +1,57 @@
 import type { SVGProps } from "react";
 
+/*
+ * The four icons that repeat most on the page draw from the <symbol> sprite in
+ * IconSprite.tsx rather than inlining their path data at every use site. Same
+ * component API as before — only the markup they emit is smaller. The icons
+ * below that appear two or three times stay inline; the indirection isn't worth
+ * it for those.
+ */
+
 export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413" />
+      <use href="#i-whatsapp" />
+    </svg>
+  );
+}
+
+/**
+ * lucide `star`, from the sprite. `fill="none" stroke="currentColor"` mirrors
+ * lucide's own defaults, so Tailwind `fill-*` / `text-*` classes still switch
+ * between a filled and an outline star exactly as they did before.
+ */
+export function StarIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      {...props}
+    >
+      <use href="#i-star" />
+    </svg>
+  );
+}
+
+/** lucide `quote`, from the sprite. */
+export function QuoteIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      {...props}
+    >
+      <use href="#i-quote" />
     </svg>
   );
 }
@@ -31,11 +79,8 @@ export function InstagramIcon(props: SVGProps<SVGSVGElement>) {
  */
 export function GoogleIcon({ mono, ...props }: SVGProps<SVGSVGElement> & { mono?: boolean }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden {...props}>
-      <path fill={mono ? "currentColor" : "#4285F4"} d="M23.52 12.273c0-.851-.076-1.67-.218-2.455H12v4.642h6.458a5.52 5.52 0 01-2.396 3.622v3.01h3.878c2.269-2.088 3.58-5.165 3.58-8.82z" />
-      <path fill={mono ? "currentColor" : "#34A853"} d="M12 24c3.24 0 5.956-1.075 7.941-2.908l-3.878-3.01c-1.075.72-2.45 1.145-4.063 1.145-3.125 0-5.77-2.11-6.714-4.946H1.276v3.109A11.995 11.995 0 0012 24z" />
-      <path fill={mono ? "currentColor" : "#FBBC05"} d="M5.286 14.281A7.212 7.212 0 014.909 12c0-.791.136-1.56.377-2.281V6.61H1.276A11.995 11.995 0 000 12c0 1.936.464 3.769 1.276 5.39l4.01-3.109z" />
-      <path fill={mono ? "currentColor" : "#EA4335"} d="M12 4.773c1.762 0 3.344.606 4.588 1.795l3.442-3.442C17.951 1.19 15.235 0 12 0 7.31 0 3.255 2.69 1.276 6.609l4.01 3.11C6.23 6.882 8.875 4.773 12 4.773z" />
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
+      <use href={mono ? "#i-google-mono" : "#i-google"} />
     </svg>
   );
 }

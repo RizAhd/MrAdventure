@@ -14,12 +14,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
  * from rAF instead, which means native touch/trackpad scrolling works for free
  * and manual control is always available.
  *
- * `children` must be an even number of identical copies of the card list — the
- * loop wraps by subtracting half the scroll width, which is only seamless when
- * the two halves match exactly.
+ * `children` is ONE copy of the card list. The loop needs two identical halves —
+ * it wraps by subtracting half the scroll width — but duplicating them in the
+ * server render put every review in the HTML twice, which an SEO audit reads as
+ * duplicate content and which doubled the heaviest section on the page. So the
+ * second half is cloned from the DOM after hydration instead: crawlers and the
+ * no-JS render see each review exactly once, and the animation is unchanged.
  */
 export function ReviewRail({ children, speed = 0.45 }: { children: ReactNode; speed?: number }) {
   const ref = useRef<HTMLDivElement>(null);
+  const originalsRef = useRef<HTMLDivElement>(null);
+  const cloneRef = useRef<HTMLDivElement>(null);
   const paused = useRef(false);
   const drag = useRef<{ active: boolean; startX: number; startScroll: number }>({
     active: false,
@@ -42,6 +47,20 @@ export function ReviewRail({ children, speed = 0.45 }: { children: ReactNode; sp
     if (half <= 0) return;
     if (el.scrollLeft >= half) el.scrollLeft -= half;
     else if (allowBackward && el.scrollLeft <= 0) el.scrollLeft += half;
+  }, []);
+
+  /**
+   * Build the duplicate half once, after hydration.
+   *
+   * It goes into its own container that React renders empty and never touches,
+   * so imperatively filling it can't collide with reconciliation. aria-hidden
+   * keeps screen readers from reading every review twice.
+   */
+  useEffect(() => {
+    const originals = originalsRef.current;
+    const clone = cloneRef.current;
+    if (!originals || !clone || clone.childElementCount > 0) return;
+    clone.innerHTML = originals.innerHTML;
   }, []);
 
   useEffect(() => {
@@ -140,7 +159,14 @@ export function ReviewRail({ children, speed = 0.45 }: { children: ReactNode; sp
           dragging ? "cursor-grabbing select-none" : "cursor-grab"
         }`}
       >
-        <div className="flex w-max items-stretch gap-5 px-5">{children}</div>
+        <div className="flex w-max items-stretch gap-5 px-5">
+          <div ref={originalsRef} className="flex items-stretch gap-5">
+            {children}
+          </div>
+          {/* Filled from the effect above — React renders it empty and leaves
+              it alone, so the cloned nodes are never reconciled away. */}
+          <div ref={cloneRef} className="flex items-stretch gap-5" aria-hidden="true" />
+        </div>
       </div>
 
       {/* Explicit controls — discoverable, and the only option for anyone who

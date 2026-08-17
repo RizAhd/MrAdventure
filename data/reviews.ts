@@ -8,7 +8,7 @@ export type Review = {
   /** English translation — only for reviews not written in English. */
   translation?: string;
   /** Approximate date. Google only shows relative ages ("2 weeks ago"), so
-   *  these are derived from the 27 Jul 2026 profile screenshots and are
+   *  these are derived from the profile listing (last read 16 Aug 2026) and are
    *  accurate to the month, which is all we display. */
   date: string;
   /** Reviewer carries Google's "Local Guide" badge. */
@@ -26,13 +26,78 @@ export type Review = {
  * Rules for this file:
  *  - Never invent, edit or "tidy up" a review. Transcribe verbatim, typos and all.
  *  - Never invent a reviewer's country. Google doesn't publish it, so we don't show it.
- *  - Two profile reviews (Lars Benack, Kapish Aggarwal) are star-only with no text.
- *    They count toward the Google rating but are not listed here — there is
- *    nothing to quote.
+ *  - Star-only reviews are not listed. Eight of them (Maresa Altnöder, Rotem
+ *    Green, Flappy Bird, Fred, Camille Hospital, Shashank !!, Kapish Aggarwal,
+ *    Lars Benack) count toward the rating but have no text to quote.
+ *  - Three more (Mark Weigel, fabiomaria calvano, K.R.) are held back until the
+ *    full text is available — Google truncated them in the source listing, and a
+ *    quote that stops mid-clause reads worse than no quote. See Asnas Moujoon
+ *    below for the one case where a truncated quote was kept.
+ *
+ * 26 reviews on the profile as of 16 Aug 2026; 15 quoted here.
  *
  * Newest first.
  */
 export const reviews: Review[] = [
+  {
+    name: "Ivan Zantchevski",
+    rating: 5,
+    text: "Excellent and reliable service! They provided us with private drivers all across the country.",
+    date: "2026-08-16",
+    reviewCount: 8,
+    service: "Island-wide private drivers",
+  },
+  {
+    name: "Abbi Eisenberg",
+    rating: 5,
+    text: "Great taxi service, we messaged to ask for a taxi and he sorted us out straight away for a really good price.",
+    date: "2026-08-14",
+    reviewCount: 10,
+  },
+  {
+    name: "adhigen vardin",
+    rating: 5,
+    text: "Good price. Safe driving",
+    date: "2026-08-11",
+    reviewCount: 3,
+  },
+  {
+    name: "Miss A Murray",
+    rating: 5,
+    text: "Amazing service. I arranged a transfer to Pasikuda with this company. The communication and transfer was all very smooth. I would highly recommend.",
+    date: "2026-08-02",
+    reviewCount: 11,
+    service: "Transfer to Pasikuda",
+  },
+  {
+    name: "Naima Amat",
+    rating: 5,
+    text: "Excelente servicio desde arugam bay a ahangama, nos han dejado en la puerta del hotel. Todo geniL",
+    translation:
+      "Excellent service from Arugam Bay to Ahangama — they dropped us right at the hotel door. All great.",
+    date: "2026-08-02",
+    localGuide: true,
+    reviewCount: 16,
+    service: "Arugam Bay → Ahangama",
+  },
+  {
+    name: "Sofian Chair",
+    rating: 5,
+    text: "Really satisfied with the service with really good prices.",
+    date: "2026-08-02",
+    reviewCount: 9,
+  },
+  {
+    name: "Sofia Bosio",
+    rating: 5,
+    text: "Viaggio da Arugam Bay a Trincomalee perfetto senza intoppi. Molto puntuale, consiglio! Driver fantastico e preparato",
+    translation:
+      "Trip from Arugam Bay to Trincomalee, perfect and without a hitch. Very punctual — recommended! Fantastic, well-prepared driver.",
+    date: "2026-07-27",
+    localGuide: true,
+    reviewCount: 58,
+    service: "Arugam Bay → Trincomalee",
+  },
   {
     name: "Michiel De Smet",
     rating: 5,
@@ -114,4 +179,4 @@ export const reviews: Review[] = [
  * Google's star rich results on LocalBusiness/Organization types.
  * See https://developers.google.com/search/docs/appearance/structured-data/review-snippet
  */
-export const googleRating = { average: 5.0, total: 10 };
+export const googleRating = { average: 5.0, total: 26 };

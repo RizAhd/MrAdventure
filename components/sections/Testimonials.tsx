@@ -1,9 +1,10 @@
-import { Star, Quote, BadgeCheck } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GoogleIcon } from "@/components/ui/icons";
+import { GoogleIcon, StarIcon, QuoteIcon } from "@/components/ui/icons";
 import { ReviewRail } from "@/components/ui/ReviewRail";
 import { reviews, googleRating, type Review } from "@/data/reviews";
 import { site } from "@/data/site";
+import { externalLink } from "@/lib/utils";
 
 const monthYear = (iso: string) =>
   new Date(iso).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
@@ -30,7 +31,7 @@ function Stars({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star
+        <StarIcon
           key={i}
           className={i < rating ? "h-4 w-4 fill-gold-500 text-gold-500" : "h-4 w-4 text-brand-200"}
           aria-hidden
@@ -48,7 +49,7 @@ function Card({ r }: { r: Review }) {
 
       {/* Oversized watermark glyph, low and right so it fills the dead space on
           short reviews instead of crowding the Google mark up top. */}
-      <Quote
+      <QuoteIcon
         className="pointer-events-none absolute -bottom-5 -right-4 h-28 w-28 rotate-180 text-brand-950/[0.04]"
         aria-hidden
       />
@@ -103,12 +104,16 @@ function Card({ r }: { r: Review }) {
 }
 
 export function Testimonials() {
-  // The marquee animates translateX(-50%), so the strip must (a) be wider than
-  // the widest viewport and (b) contain an EVEN number of copies — otherwise
-  // the halfway point isn't a copy boundary and the loop visibly jumps.
-  // Each card is ~21rem + 1.25rem gap ≈ 356px.
+  // One copy per half. The rail needs two identical halves to loop seamlessly,
+  // but it clones the second one from the DOM after hydration — rendering both
+  // here put all 8 reviews in the HTML twice, which reads as duplicate content
+  // and made this the heaviest section on the page by a wide margin.
+  //
+  // Each card is ~21rem + 1.25rem gap ≈ 356px, so 8 reviews already overflow any
+  // viewport; if the review count ever drops, repeat the list to stay wider than
+  // the screen and the clone still lines up.
   const perHalf = Math.max(1, Math.ceil(2200 / (reviews.length * 356)));
-  const loop = Array.from({ length: perHalf * 2 }, () => reviews).flat();
+  const half = Array.from({ length: perHalf }, () => reviews).flat();
 
   return (
     <section id="reviews" className="section relative overflow-hidden bg-sand">
@@ -140,7 +145,7 @@ export function Testimonials() {
           text needs to be in the HTML, not injected by the client. */}
       <div className="mt-12">
         <ReviewRail>
-          {loop.map((r, i) => (
+          {half.map((r, i) => (
             <Card key={`${r.name}-${i}`} r={r} />
           ))}
         </ReviewRail>
@@ -149,8 +154,7 @@ export function Testimonials() {
       <div className="relative mt-12 text-center">
         <a
           href={site.socials.google}
-          target="_blank"
-          rel="noopener noreferrer"
+          {...externalLink}
           className="group inline-flex items-center gap-2.5 rounded-full border-2 border-brand-200 bg-white px-6 py-3.5 text-sm font-semibold text-brand-800 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-700 hover:bg-brand-700 hover:text-white hover:shadow-lg"
         >
           <GoogleIcon className="h-5 w-5 transition-transform duration-300 group-hover:rotate-[360deg]" />

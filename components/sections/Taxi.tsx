@@ -7,12 +7,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { waEnquiry } from "@/lib/whatsapp";
-import { blurProps } from "@/lib/utils";
+import { blurProps, externalLink } from "@/lib/utils";
 
 const features = [
   { Icon: Plane, title: "Airport Drop & Pickup", text: "On-time transfers to and from Colombo (CMB) and Mattala airports, day or night." },
   { Icon: ShieldCheck, title: "Fixed, fair prices", text: "Agreed up front on WhatsApp — no meters, no detours, no surprises." },
-  { Icon: Users, title: "Any group size", text: "Cars, vans and a 27-seat coach — perfect for couples, families and big groups." },
+  { Icon: Users, title: "Any group size", text: "Cars, cabs, vans and a 27-seat coach — perfect for couples, families and big groups." },
 ];
 
 const route = ["Colombo", "Kandy", "Sigiriya", "Ella", "Galle", "Matara", "Arugam Bay", "Trincomalee"];
@@ -30,7 +30,7 @@ export function Taxi() {
           align="left"
           eyebrow="Island-wide Taxi"
           title="Your ride, anywhere in Sri Lanka"
-          subtitle="Safe, reliable door-to-door taxi and airport transfers across the whole island — from a quick city hop to a full multi-day road trip."
+          subtitle="Safe, reliable door-to-door taxi and cab hire with airport pickup and drop, covering all of Sri Lanka — from a quick city hop to a full multi-day road trip."
         />
 
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-2">
@@ -70,8 +70,7 @@ export function Taxi() {
             <Reveal delay={0.15} className="mt-8">
               <a
                 href={waEnquiry("an island-wide taxi / airport transfer")}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...externalLink}
                 className={buttonClasses("gold", "lg")}
               >
                 <WhatsAppIcon className="h-5 w-5" />
@@ -110,9 +109,9 @@ export function Taxi() {
             Popular taxi &amp; airport transfer routes
           </h3>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/70">
-            Fares depend on the vehicle and your group size, so we quote each trip individually — tap any
-            route for a fixed price on WhatsApp, usually within minutes. Don&apos;t see your journey? We
-            drive anywhere on the island.
+            Fares depend on the vehicle and your group size, so we quote every cab trip individually — tap
+            any route for a fixed price on WhatsApp, usually within minutes. Don&apos;t see your journey?
+            Our island-wide cabs cover every corner of Sri Lanka.
           </p>
           <ul className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
             {routes.map((r) => (

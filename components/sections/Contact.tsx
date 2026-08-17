@@ -5,6 +5,8 @@ import { MapPin, Phone, Send } from "lucide-react";
 import { site } from "@/data/site";
 import { allServices } from "@/data/services";
 import { waBooking, waEnquiry, PHONE_TEL, PHONE_DISPLAY } from "@/lib/whatsapp";
+import { externalLink } from "@/lib/utils";
+import { trackWhatsApp } from "@/lib/analytics";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon, FacebookIcon, InstagramIcon, TikTokIcon, GoogleMonoIcon } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -41,6 +43,9 @@ export function Contact() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Fired here rather than by the delegated listener — this opens WhatsApp
+    // via window.open, so there's no anchor for that listener to see.
+    trackWhatsApp({ source: "contact-form", subject: form.service, label: form.pickup });
     window.open(waBooking(form), "_blank", "noopener,noreferrer");
   };
 
@@ -63,8 +68,7 @@ export function Contact() {
             <div className="mt-8 space-y-3">
               <a
                 href={waEnquiry("a booking")}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...externalLink}
                 className="flex items-center gap-4 rounded-2xl border border-brand-100 bg-white p-4 transition-shadow hover:shadow-md"
               >
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-whatsapp text-white">
@@ -104,8 +108,7 @@ export function Contact() {
                 <a
                   key={label}
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...externalLink}
                   aria-label={label}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-700 text-white transition-colors hover:bg-gold-500 hover:text-brand-950"
                 >

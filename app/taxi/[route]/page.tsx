@@ -10,7 +10,7 @@ import { waEnquiry, PHONE_TEL, PHONE_DISPLAY } from "@/lib/whatsapp";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { blurProps } from "@/lib/utils";
+import { blurProps, externalLink } from "@/lib/utils";
 
 const SITE_URL = "https://mradventure.lk";
 
@@ -139,7 +139,7 @@ availableLanguage: ["en"],
             light
             items={[
               { label: "Home", href: "/" },
-              { label: "Taxi routes", href: "/#taxi" },
+              { label: "Taxi routes", href: "/taxi/" },
               { label: `${r.fromShort} to ${r.toShort}` },
             ]}
           />
@@ -176,7 +176,7 @@ availableLanguage: ["en"],
           </dl>
 
           <div className="mt-9 flex flex-wrap gap-3">
-            <a href={cta} target="_blank" rel="noopener noreferrer" className={buttonClasses("gold", "lg")}>
+            <a href={cta} {...externalLink} className={buttonClasses("gold", "lg")}>
               <WhatsAppIcon className="h-5 w-5" />
               Get a fixed price
             </a>
@@ -320,7 +320,7 @@ availableLanguage: ["en"],
             within minutes. No booking fee, no deposit to hold a date.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <a href={cta} target="_blank" rel="noopener noreferrer" className={buttonClasses("whatsapp", "lg")}>
+            <a href={cta} {...externalLink} className={buttonClasses("whatsapp", "lg")}>
               <WhatsAppIcon className="h-5 w-5" />
               Get my price on WhatsApp
             </a>

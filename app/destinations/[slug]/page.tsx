@@ -10,7 +10,7 @@ import { waEnquiry } from "@/lib/whatsapp";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { blurProps } from "@/lib/utils";
+import { blurProps, externalLink } from "@/lib/utils";
 
 const SITE_URL = "https://mradventure.lk";
 
@@ -53,20 +53,43 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
   const others = destinations.filter((x) => x.slug !== d.slug).slice(0, 6);
   const cta = waEnquiry(`a trip to ${d.name}`);
 
+  // The destination on its own says nothing about who runs the transfers, so
+  // these pages used to float free of the business entity — unlike the route
+  // pages, which point `provider` at #business. A TaxiService node alongside the
+  // destination ties them together (TouristDestination has no `provider` of its
+  // own, so bolting one on would just be ignored).
   const ld = {
     "@context": "https://schema.org",
-    "@type": "TouristDestination",
-    name: d.name,
-    description: d.blurb,
-    url: `${SITE_URL}/destinations/${d.slug}/`,
-    image: `${SITE_URL}${d.image}`,
-    address: {
-      "@type": "PostalAddress",
-      addressRegion: d.region,
-      addressCountry: "LK",
-    },
-    touristType: ["Leisure travellers", "Families", "Surfers", "Wildlife enthusiasts"],
-    includesAttraction: d.highlights.map((h) => ({ "@type": "TouristAttraction", name: h })),
+    "@graph": [
+      {
+        "@type": "TouristDestination",
+        "@id": `${SITE_URL}/destinations/${d.slug}/#destination`,
+        name: d.name,
+        description: d.blurb,
+        url: `${SITE_URL}/destinations/${d.slug}/`,
+        image: `${SITE_URL}${d.image}`,
+        address: {
+          "@type": "PostalAddress",
+          addressRegion: d.region,
+          addressCountry: "LK",
+        },
+        touristType: ["Leisure travellers", "Families", "Surfers", "Wildlife enthusiasts"],
+        includesAttraction: d.highlights.map((h) => ({ "@type": "TouristAttraction", name: h })),
+      },
+      {
+        "@type": "TaxiService",
+        "@id": `${SITE_URL}/destinations/${d.slug}/#service`,
+        name: `Taxi & cab transfers to ${d.name}`,
+        description: `Private taxi and cab transfers to ${d.name}, Sri Lanka — fixed prices, 24/7 airport pickup and drop.`,
+        provider: { "@id": `${SITE_URL}/#business` },
+        areaServed: { "@id": `${SITE_URL}/destinations/${d.slug}/#destination` },
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: cta,
+          availableLanguage: ["en", "si", "ta"],
+        },
+      },
+    ],
   };
 
   return (
@@ -90,7 +113,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
             light
             items={[
               { label: "Home", href: "/" },
-              { label: "Destinations", href: "/#destinations" },
+              { label: "Destinations", href: "/destinations/" },
               { label: d.name },
             ]}
           />
@@ -138,8 +161,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
                 </ul>
                 <a
                   href={cta}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...externalLink}
                   className={buttonClasses("whatsapp", "md", "mt-6 w-full")}
                 >
                   <WhatsAppIcon className="h-4 w-4" />

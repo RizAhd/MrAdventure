@@ -13,7 +13,7 @@ export function Destinations() {
         <SectionHeading
           eyebrow="Destinations"
           title="Where we'll take you"
-          subtitle="From east-coast surf to misty hill country and ancient rock fortresses — we cover the whole island."
+          subtitle="From east-coast surf to misty hill country and ancient rock fortresses — our island-wide cabs cover all of Sri Lanka."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {destinations.map((d, i) => (

@@ -7,6 +7,8 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
 import { BackToTop } from "@/components/layout/BackToTop";
+import { WhatsAppTracking } from "@/components/layout/WhatsAppTracking";
+import { IconSprite } from "@/components/ui/IconSprite";
 import { site } from "@/data/site";
 import { PHONE_TEL } from "@/lib/whatsapp";
 
@@ -76,8 +78,11 @@ export const metadata: Metadata = {
     template: "%s | Mr Adventure Tours & Travels",
   },
   // ~155 chars — past that Google truncates and the pitch is cut mid-sentence.
+  // The trailing clause was an em dash ("fee — quote on WhatsApp"), which put
+  // the rendered width 2px over the 1000px SERP budget. A full stop is narrower
+  // and reads the same.
   description:
-    "Sri Lanka taxi & cab service rated 5.0 on Google. 24/7 Colombo airport pickup and drop, island-wide transfers. Fixed prices, no booking fee — quote on WhatsApp.",
+    "Sri Lanka taxi & cab service rated 5.0 on Google. 24/7 Colombo airport pickup and drop, island-wide transfers. Fixed prices, no booking fee. Quote on WhatsApp.",
   keywords: [
     "Sri Lanka taxi service",
     "Sri Lanka cab service",
@@ -94,6 +99,27 @@ export const metadata: Metadata = {
   // Canonical + og:url were missing entirely; without them /index.html is an
   // unclaimed duplicate of / and shares aren't attributed to the domain.
   alternates: { canonical: "/" },
+  manifest: "/manifest.webmanifest",
+  // No robots meta was emitted at all before. The defaults are what we want,
+  // but stating them explicitly also lets us opt into large image previews,
+  // which matter for a travel site, and untruncated snippets.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  // Set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION to the token from Search Console
+  // to emit the verification meta. Omitted entirely when unset — an invented
+  // token is worse than none.
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
+    : {}),
   appleWebApp: {
     capable: true,
     title: "Mr Adventure",
@@ -108,14 +134,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     images: [
-      { url: "og.jpg", width: 1200, height: 630, alt: "Mr Adventure — Sri Lanka island-wide taxi and airport transfers" },
+      { url: "/og.jpg", width: 1200, height: 630, alt: "Mr Adventure — Sri Lanka island-wide taxi and airport transfers" },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sri Lanka Taxi & Cab Service | Airport Pickup & Drop",
     description: "Island-wide taxi & airport transfers across Sri Lanka, 24/7. Fixed prices. Book on WhatsApp.",
-    images: ["og.jpg"],
+    images: ["/og.jpg"],
   },
 };
 
@@ -137,6 +163,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </Script>
       </head>
       <body className="flex min-h-full flex-col bg-sand text-ink">
+        <IconSprite />
         {/* Site-wide entity graph. Lives in the layout so every page (home,
             routes, destinations) resolves the same business and site nodes,
             which page-level schema then references by @id. */}
@@ -159,6 +186,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <FloatingWhatsApp />
         <MobileActionBar />
         <BackToTop />
+        {/* Renders nothing — attaches the delegated wa.me click listener. */}
+        <WhatsAppTracking />
       </body>
     </html>
   );

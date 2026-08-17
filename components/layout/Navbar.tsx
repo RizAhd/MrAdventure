@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, externalLink } from "@/lib/utils";
 import { site } from "@/data/site";
 import { waEnquiry, PHONE_TEL, PHONE_DISPLAY } from "@/lib/whatsapp";
 import { buttonClasses } from "@/components/ui/Button";
@@ -121,7 +121,7 @@ export function Navbar() {
           >
             <Phone className="h-5 w-5" />
           </a>
-          <a href={waEnquiry("a booking")} target="_blank" rel="noopener noreferrer" className={buttonClasses("whatsapp", "md")}>
+          <a href={waEnquiry("a booking")} {...externalLink} className={buttonClasses("whatsapp", "md")}>
             <WhatsAppIcon className="h-5 w-5" />
             WhatsApp
           </a>
@@ -167,8 +167,7 @@ export function Navbar() {
               <li className="mt-2 flex gap-2">
                 <a
                   href={waEnquiry("a booking")}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...externalLink}
                   onClick={() => setOpen(false)}
                   className={buttonClasses("whatsapp", "md", "flex-1")}
                 >

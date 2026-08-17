@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 import { site } from "@/data/site";
 import { allServices } from "@/data/services";
 import { waEnquiry, PHONE_TEL, PHONE_DISPLAY } from "@/lib/whatsapp";
+import { externalLink } from "@/lib/utils";
 import { WhatsAppIcon, FacebookIcon, InstagramIcon, TikTokIcon, GoogleMonoIcon } from "@/components/ui/icons";
 
 // Profiles with no URL yet are dropped rather than rendered as dead `href="#"`.
@@ -36,8 +38,7 @@ export function Footer() {
               <a
                 key={label}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...externalLink}
                 aria-label={label}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-gold-500 hover:text-brand-950"
               >
@@ -47,10 +48,27 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Explore */}
-        <div>
-          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-white">Explore</h3>
+        {/* Explore. The column labels are nav group names, not document
+            headings — as <h3> they had no parent <h2> in the footer and
+            orphaned onto whatever section heading came last on the page. */}
+        <nav aria-labelledby="footer-explore">
+          <p id="footer-explore" className="font-display text-sm font-bold uppercase tracking-widest text-white">
+            Explore
+          </p>
           <ul className="mt-4 space-y-2.5 text-sm">
+            {/* Section hubs first — real pages, and the only place in the global
+                chrome that links to them. The rest are home-page anchors. */}
+            {[
+              { href: "/taxi/", label: "All taxi routes" },
+              { href: "/destinations/", label: "All destinations" },
+              { href: "/services/", label: "Safaris & rentals" },
+            ].map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} prefetch={false} className="transition-colors hover:text-gold-400">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
             {site.nav.map((item) => (
               <li key={item.href}>
                 <a href={item.href} className="transition-colors hover:text-gold-400">
@@ -59,22 +77,26 @@ export function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
 
         {/* Services */}
-        <div>
-          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-white">Services</h3>
+        <nav aria-labelledby="footer-services">
+          <p id="footer-services" className="font-display text-sm font-bold uppercase tracking-widest text-white">
+            Services
+          </p>
           <ul className="mt-4 space-y-2.5 text-sm">
+            {/* Internal links to the service pages rather than six more wa.me
+                links — better for crawlers, and it stops the footer alone
+                accounting for a sixth of the page's outbound links. */}
             {allServices.map((s) => (
               <li key={s.slug}>
-                <a
-                  href={waEnquiry(s.subject)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={`/services/${s.slug}/`}
+                  prefetch={false}
                   className="transition-colors hover:text-gold-400"
                 >
                   {s.title}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
@@ -83,12 +105,14 @@ export function Footer() {
               </a>
             </li>
           </ul>
-        </div>
+        </nav>
 
         {/* Contact */}
         <div>
-          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-white">Get in touch</h3>
-          <ul className="mt-4 space-y-3.5 text-sm">
+          <p id="footer-contact" className="font-display text-sm font-bold uppercase tracking-widest text-white">
+            Get in touch
+          </p>
+          <ul aria-labelledby="footer-contact" className="mt-4 space-y-3.5 text-sm">
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-400" />
               <span>{site.location}</span>
@@ -102,8 +126,7 @@ export function Footer() {
             <li>
               <a
                 href={waEnquiry("a booking")}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...externalLink}
                 className="flex items-center gap-3 transition-colors hover:text-gold-400"
               >
                 <WhatsAppIcon className="h-5 w-5 shrink-0 text-gold-400" />
@@ -125,8 +148,7 @@ export function Footer() {
           Built by{" "}
           <a
             href="https://www.linkedin.com/in/riflan/"
-            target="_blank"
-            rel="noopener noreferrer"
+            {...externalLink}
             className="font-medium text-white/75 underline-offset-2 transition-colors hover:text-gold-400 hover:underline"
           >
             Riflan Mohamed

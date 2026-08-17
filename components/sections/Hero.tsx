@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { MapPin, Navigation, Users, Compass, Star } from "lucide-react";
+import { MapPin, Navigation, Users, Compass } from "lucide-react";
 import { waLink, waEnquiry } from "@/lib/whatsapp";
-import { destinations } from "@/data/destinations";
+import { externalLink } from "@/lib/utils";
+import { trackWhatsApp } from "@/lib/analytics";
+import { destinationNames } from "@/data/destination-names";
 import { buttonClasses } from "@/components/ui/Button";
-import { WhatsAppIcon } from "@/components/ui/icons";
+import { WhatsAppIcon, StarIcon } from "@/components/ui/icons";
 
 const slides = [
   { src: "/destinations/galle.webp", alt: "Galle Fort lighthouse on the south coast" },
@@ -41,6 +43,13 @@ export function Hero() {
     if (from) lines.push(`• From: ${from}`);
     if (to) lines.push(`• To: ${to}`);
     lines.push(`• Passengers: ${pax}`, "", "Please share the fixed fare. Thank you!");
+    // Highest-intent conversion on the site — someone who filled in a route.
+    // Fired here because window.open leaves no anchor for the delegated listener.
+    trackWhatsApp({
+      source: "hero-form",
+      subject: `${from || "unspecified"} → ${to || "unspecified"}`,
+      label: pax,
+    });
     window.open(waLink(lines.join("\n")), "_blank", "noopener,noreferrer");
   };
 
@@ -77,20 +86,22 @@ export function Hero() {
           Cars · Vans · Coaches · Island-wide
         </motion.span>
 
-        <motion.h1
-          variants={item}
-          className="mx-auto mt-6 max-w-3xl font-display text-[2.6rem] font-bold leading-[1.03] tracking-tight text-white text-balance sm:text-6xl lg:text-[4.25rem]"
-        >
+        {/* Deliberately NOT a motion child. This is the LCP element, and the
+            shared `item` variant starts at opacity 0 — so the headline was
+            server-rendered but invisible until framer-motion hydrated, which
+            pushes Largest Contentful Paint out to whenever the JS lands.
+            Everything around it still staggers in. */}
+        <h1 className="mx-auto mt-6 max-w-3xl font-display text-[2.6rem] font-bold leading-[1.03] tracking-tight text-white text-balance sm:text-6xl lg:text-[4.25rem]">
           Island-Wide{" "}
           <span className="bg-gradient-to-r from-gold-300 to-gold-500 bg-clip-text text-transparent">
             Taxi &amp; Cab Service
           </span>{" "}
           Across Sri Lanka
-        </motion.h1>
+        </h1>
 
         <motion.p variants={item} className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
           Tell us where you&apos;re headed — get a fixed, fair price on WhatsApp in minutes. Airport
-          transfers, day trips and island-wide tours for any group size.
+          pickup and drop, day trips and island-wide cab hire anywhere in Sri Lanka, for any group size.
         </motion.p>
 
         {/* Booking bar */}
@@ -120,8 +131,8 @@ export function Hero() {
                   className="w-full bg-transparent text-sm font-medium text-ink outline-none placeholder:text-ink/40"
                 />
                 <datalist id="hero-destinations">
-                  {destinations.map((d) => (
-                    <option key={d.name} value={d.name} />
+                  {destinationNames.map((name) => (
+                    <option key={name} value={name} />
                   ))}
                 </datalist>
               </span>
@@ -152,7 +163,7 @@ export function Hero() {
 
         <motion.div variants={item} className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/80">
           <span className="flex items-center gap-1.5">
-            <Star className="h-4 w-4 fill-gold-400 text-gold-400" />
+            <StarIcon className="h-4 w-4 fill-gold-400 text-gold-400" />
             Fixed fair prices
           </span>
           <span>· No booking fee</span>
@@ -163,8 +174,7 @@ export function Hero() {
         <motion.div variants={item} className="mt-6">
           <a
             href={waEnquiry("a booking")}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...externalLink}
             className="text-sm font-semibold text-gold-300 underline-offset-4 hover:underline"
           >
             or just message us on WhatsApp →

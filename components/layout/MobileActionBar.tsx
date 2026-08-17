@@ -1,5 +1,6 @@
 import { Phone } from "lucide-react";
 import { PHONE_TEL, PHONE_DISPLAY, waEnquiry } from "@/lib/whatsapp";
+import { externalLink } from "@/lib/utils";
 import { WhatsAppIcon } from "@/components/ui/icons";
 
 /**
@@ -24,8 +25,7 @@ export function MobileActionBar() {
       {/* WhatsApp */}
       <a
         href={waEnquiry("a booking")}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...externalLink}
         aria-label="Chat with Mr Adventure on WhatsApp"
         className="relative flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg shadow-black/20 transition-transform active:scale-95"
       >

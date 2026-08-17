@@ -1,3 +1,5 @@
+import { destinationNames } from "./destination-names";
+
 export type Destination = {
   /** URL segment — /destinations/<slug>/ */
   slug: string;
@@ -256,5 +258,20 @@ export const destinations: Destination[] = [
       "The top of the east-coast run from Arugam Bay via Batticaloa and Pasikuda, or across the interior from Kandy and the Cultural Triangle.",
   },
 ];
+
+// destination-names.ts duplicates the names as a literal so the client-side Hero
+// <datalist> doesn't drag this whole table into the JS bundle. Deriving it would
+// defeat that, so instead we fail loudly in dev if the two fall out of step.
+if (process.env.NODE_ENV !== "production") {
+  const actual = destinations.map((d) => d.name);
+  const drifted =
+    actual.length !== destinationNames.length || actual.some((n, i) => n !== destinationNames[i]);
+  if (drifted) {
+    throw new Error(
+      `data/destination-names.ts is out of sync with data/destinations.ts.\n` +
+        `Expected: [${actual.map((n) => `"${n}"`).join(", ")}]`,
+    );
+  }
+}
 
 export const destinationBySlug = (slug: string) => destinations.find((d) => d.slug === slug);

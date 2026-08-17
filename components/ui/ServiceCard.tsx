@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { Check } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Check } from "lucide-react";
 import type { Service } from "@/data/services";
 import { waEnquiry } from "@/lib/whatsapp";
-import { blurProps } from "@/lib/utils";
+import { blurProps, externalLink } from "@/lib/utils";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 
@@ -10,7 +11,17 @@ export function ServiceCard({ service }: { service: Service }) {
   const cta = service.category === "safari" ? "Book on WhatsApp" : "Rent on WhatsApp";
   return (
     <article className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-brand-950/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:translate-y-0">
-      <div className="relative aspect-[4/3] overflow-hidden">
+      {/* The image and title link through to the service page rather than
+          straight to WhatsApp — same reasoning as the destination cards: it
+          gives crawlers an internal link and gives visitors the detail before
+          they commit to a message. The WhatsApp CTA below still converts
+          directly for anyone who's already decided.
+          prefetch off: see the note in Destinations.tsx. */}
+      <Link
+        href={`/services/${service.slug}/`}
+        prefetch={false}
+        className="relative block aspect-[4/3] overflow-hidden"
+      >
         <Image
           src={service.image}
           alt={service.title}
@@ -20,10 +31,13 @@ export function ServiceCard({ service }: { service: Service }) {
           {...blurProps(service.image)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/50 to-transparent" />
+        <span className="absolute right-4 top-4 flex h-10 w-10 translate-y-1 items-center justify-center rounded-full bg-gold-500 text-brand-950 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          <ArrowUpRight className="h-5 w-5" />
+        </span>
         <h3 className="absolute bottom-4 left-5 font-display text-2xl font-bold text-white drop-shadow">
           {service.title}
         </h3>
-      </div>
+      </Link>
 
       <div className="flex flex-1 flex-col p-6">
         <p className="text-sm leading-relaxed text-ink/70">{service.blurb}</p>
@@ -37,8 +51,7 @@ export function ServiceCard({ service }: { service: Service }) {
         </ul>
         <a
           href={waEnquiry(service.subject)}
-          target="_blank"
-          rel="noopener noreferrer"
+          {...externalLink}
           className={buttonClasses("primary", "md", "mt-6 w-full")}
         >
           <WhatsAppIcon className="h-5 w-5" />

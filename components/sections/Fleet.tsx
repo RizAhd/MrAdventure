@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { buttonClasses } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { waEnquiry } from "@/lib/whatsapp";
-import { blurProps } from "@/lib/utils";
+import { blurProps, externalLink } from "@/lib/utils";
 
 export function Fleet() {
   const track = useRef<HTMLDivElement>(null);
@@ -27,7 +27,7 @@ export function Fleet() {
             align="left"
             eyebrow="Our Fleet"
             title="Ride in comfort"
-            subtitle="Clean, well-maintained cars, vans and a 27-seat coach for airport runs and island tours — plus safari jeeps, scooters and tuk-tuks."
+            subtitle="Clean, well-maintained taxi cabs, vans and a 27-seat coach for airport runs and tours across Sri Lanka — plus safari jeeps, scooters and tuk-tuks."
           />
           <div className="hidden shrink-0 gap-2 sm:flex">
             <button
@@ -77,8 +77,7 @@ export function Fleet() {
                 <p className="mt-1 text-sm leading-relaxed text-ink/70">{v.note}</p>
                 <a
                   href={waEnquiry(v.name)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...externalLink}
                   className={buttonClasses("whatsapp", "sm", "mt-4 w-full")}
                 >
                   <WhatsAppIcon className="h-4 w-4" />
@@ -92,8 +91,7 @@ export function Fleet() {
         <div className="mt-8 text-center">
           <a
             href={waEnquiry("your vehicle fleet")}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...externalLink}
             className={buttonClasses("primary", "md")}
           >
             <WhatsAppIcon className="h-5 w-5" />

@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { Stats } from "@/components/sections/Stats";
+import { Intro } from "@/components/sections/Intro";
 import { Safaris } from "@/components/sections/Safaris";
 import { Rentals } from "@/components/sections/Rentals";
 import { Taxi } from "@/components/sections/Taxi";
@@ -12,6 +13,7 @@ import { FAQ } from "@/components/sections/FAQ";
 import { faqs } from "@/data/faqs";
 import { Contact } from "@/components/sections/Contact";
 import { site } from "@/data/site";
+import { allServices } from "@/data/services";
 import { PHONE_TEL } from "@/lib/whatsapp";
 
 const SITE_URL = "https://mradventure.lk";
@@ -34,11 +36,12 @@ const jsonLd = {
     addressRegion: "Eastern Province",
     addressCountry: "LK",
   },
-  // Arugam Bay coordinates — helps Google place the business on the map.
+  // Taken from the business's own Google Maps listing rather than a generic
+  // Arugam Bay centroid, so the schema agrees with the map pin.
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 6.8404,
-    longitude: 81.8339,
+    latitude: 6.8456586,
+    longitude: 81.8305803,
   },
   // Open 24/7 for airport transfers.
   openingHoursSpecification: {
@@ -81,9 +84,19 @@ const jsonLd = {
           areaServed: { "@type": "Country", name: "Sri Lanka" },
         },
       })),
-      ...["Kumana Safari", "Lagoon Safari", "Boat Safari", "Scooter Rent", "Tuk Tuk Rent", "Bicycle Rent"].map(
-        (name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } }),
-      ),
+      // Safaris and rentals now have pages of their own, so each offer points at
+      // its @id — Google resolves them to the full Service node rather than a
+      // bare name string.
+      ...allServices.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          "@id": `${SITE_URL}/services/${s.slug}/#service`,
+          name: s.title,
+          url: `${SITE_URL}/services/${s.slug}/`,
+          provider: { "@id": `${SITE_URL}/#business` },
+        },
+      })),
     ],
   },
 };
@@ -105,6 +118,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <Hero />
       <Stats />
+      <Intro />
       <Taxi />
       <Fleet />
       <Destinations />

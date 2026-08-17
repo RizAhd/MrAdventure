@@ -19,9 +19,19 @@ export const site = {
     // link that was live on the site and in sameAs.
     instagram: "https://www.instagram.com/mradventuretravels/",
     tiktok: "", // no TikTok account yet — icon is hidden while this is empty
-    // TODO: swap for the canonical Maps URL (…/maps/place/… with the CID).
-    // share.google links are rotating shortlinks, so they're weak in `sameAs`.
-    google: "https://share.google/0ndq5IgOysnODwG9W",
+    /**
+     * Canonical Google Maps place URL, resolved from the profile's own share
+     * link on 16 Aug 2026. Was a share.google shortlink, which rotates and is
+     * therefore weak as a `sameAs` signal.
+     *
+     * The durable parts are the `data=` blob — feature ID
+     * 0x3ae5bd0059bdd565:0x167235d08c00d272 and Knowledge Graph ID
+     * /g/11zcs1hr37 — which is what ties this site to the map listing. The
+     * session parameters Google appends (`entry`, `g_ep`, `skid`) are tracking
+     * noise and are stripped.
+     */
+    google:
+      "https://www.google.com/maps/place/Mr+Adventure+Tours+%26+Travels/@6.8456586,81.8305803,17z/data=!4m6!3m5!1s0x3ae5bd0059bdd565:0x167235d08c00d272!8m2!3d6.8456586!4d81.8305803!16s%2Fg%2F11zcs1hr37",
   },
   // Root-relative so they still resolve from /taxi/... and /destinations/...
   // pages, not just the home page.
