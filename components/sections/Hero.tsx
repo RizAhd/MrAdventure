@@ -31,9 +31,15 @@ export function Hero() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [pax, setPax] = useState(passengerOptions[0]);
+  // False until the carousel first advances. The opening slide is the LCP
+  // element, so it must not start at opacity 0 — see the note on <AnimatePresence>.
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % slides.length), 5500);
+    const id = setInterval(() => {
+      setStarted(true);
+      setIndex((i) => (i + 1) % slides.length);
+    }, 5500);
     return () => clearInterval(id);
   }, []);
 
@@ -57,10 +63,16 @@ export function Hero() {
     <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden bg-brand-950">
       {/* Cinematic rotating background */}
       <AnimatePresence>
+        {/* `initial={false}` on the very first slide is deliberate. Framer
+            renders the initial state during SSR, so `opacity: 0` meant the hero
+            photo — the Largest Contentful Paint element — stayed invisible until
+            hydration finished. On a throttled mobile connection that pushed LCP
+            past 5s on its own. The first slide now paints with the HTML; every
+            slide after it still cross-fades and zooms as before. */}
         <motion.div
           key={index}
           className="absolute inset-0"
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={started ? { opacity: 0, scale: 1.1 } : false}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ opacity: { duration: 1.4 }, scale: { duration: 7, ease: "linear" } }}
